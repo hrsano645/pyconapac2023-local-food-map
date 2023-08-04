@@ -74,8 +74,8 @@ while True:
 
 pprint(mapinfo_list)
 
-# とりあえずひとつ
-# mapinfo_list = mapinfo_list[0:2]
+# とりあえず絞って詳細収集する
+mapinfo_list = mapinfo_list[0:2]
 
 # 詳細URLからさらに詳細情報を取得する
 for mapinfo in mapinfo_list:
@@ -95,3 +95,4 @@ for mapinfo in mapinfo_list:
 
 pprint(mapinfo_list)
 
+# CSVファイルに書き出してみる
