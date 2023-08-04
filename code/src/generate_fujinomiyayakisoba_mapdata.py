@@ -1,6 +1,7 @@
 # 富士宮焼きそば学会のサイトから、マップ用のデータを生成する
 
 # インポート
+import csv
 import requests
 from bs4 import BeautifulSoup
 
@@ -61,21 +62,21 @@ print("page.1")
 mapinfo_list.extend(get_shopinfo_list(siteurl))
 
 # 2ページ目以降、ページネーションはすでに決まってるので、そのままループで回す
-while True:
-    print(f"page.{pagenum}")
-    pageurl = siteurl + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
+# while True:
+#     print(f"page.{pagenum}")
+#     pageurl = siteurl + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
 
-    if get_shopinfo_list(pageurl) is None:
-        break
-    mapinfo_list.extend(get_shopinfo_list(pageurl))
+#     if get_shopinfo_list(pageurl) is None:
+#         break
+#     mapinfo_list.extend(get_shopinfo_list(pageurl))
 
-    # ページネーション処理
-    pagenum =  pagenum + 1
+#     # ページネーション処理
+#     pagenum =  pagenum + 1
 
-pprint(mapinfo_list)
+# pprint(mapinfo_list)
 
 # とりあえず絞って詳細収集する
-mapinfo_list = mapinfo_list[0:2]
+mapinfo_list = mapinfo_list[0:10]
 
 # 詳細URLからさらに詳細情報を取得する
 for mapinfo in mapinfo_list:
@@ -95,4 +96,13 @@ for mapinfo in mapinfo_list:
 
 pprint(mapinfo_list)
 
-# CSVファイルに書き出してみる
+# mapinfo_listをCSVファイルに書き出してみる。辞書内の値はすべて書き出す
+with open('mapdata.csv', 'w', newline='') as csvfile:
+    # フィールド名がまばらだったので、生成する
+    # すべてmapinfoからフィールド名を取得してsetで重複を取り除いて、リストに戻す
+    fieldnames = list(set().union(*mapinfo_list))
+
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    for mapinfo in mapinfo_list:
+        writer.writerow(mapinfo)
