@@ -1,4 +1,11 @@
 # 富士宮焼きそば学会のサイトから、マップ用のデータを生成する
+# メモ
+
+# * ここでは富士宮焼きそばのまっぷを作るためのデータを生成する
+# * ノウハウ的なことを伝えることにしてみる。
+# * データの取得と出力の間の前処理が結構大変なのよね。ここがあることがわかるとデータを作るという作業に馴染めると思う。
+# * 言いたいテーマはそこでいいかな。
+
 
 # インポート
 import csv
@@ -106,3 +113,4 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
     writer.writeheader()
     for mapinfo in mapinfo_list:
         writer.writerow(mapinfo)
+
