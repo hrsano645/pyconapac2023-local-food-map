@@ -32,9 +32,9 @@ def replace_str(text: str) -> str:
         replaced_text = replaced_text.replace(key,val)
     return replaced_text
 
-def get_shopinfo_list(url) -> list[dict]:
+def get_shopinfo_list(url: str) -> list[dict]:
     """
-    該当URLからshoplistを取得する。結果は辞書が入ったリストを返す
+    該当URLから店舗情報を取得する。結果は辞書が入ったリストを返す。中身は店名, 詳細URL
     ページネーションが見つからず、サイト構造的に取得できない場合はNoneを返す
     """
 
@@ -61,34 +61,22 @@ def get_shopinfo_list(url) -> list[dict]:
 
 
 # 学会の一覧から、店舗名と詳細情報用のURLを取得する。マップのセットにしておく
-mapinfo_list = []
+shopinfo_list = []
 
 # ページの中にある店舗一覧の中から、店舗名と詳細URLを取得
 # 最初のページを試す
 print("page.1")
-mapinfo_list.extend(get_shopinfo_list(siteurl))
+shopinfo_list.extend(get_shopinfo_list(siteurl))
 
 # 2ページ目以降、ページネーションはすでに決まってるので、そのままループで回す
-# while True:
-#     print(f"page.{pagenum}")
-#     pageurl = siteurl + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
-
-#     if get_shopinfo_list(pageurl) is None:
-#         break
-#     mapinfo_list.extend(get_shopinfo_list(pageurl))
-
-#     # ページネーション処理
-#     pagenum =  pagenum + 1
-
-# pprint(mapinfo_list)
 
 # とりあえず絞って詳細収集する
-mapinfo_list = mapinfo_list[0:10]
+shopinfo_list = shopinfo_list[0:10]
 
 # 詳細URLからさらに詳細情報を取得する
-for mapinfo in mapinfo_list:
+for shopinfo in shopinfo_list:
     # URLから店舗情報を取得
-    res = requests.get(mapinfo['specurl'])
+    res = requests.get(shopinfo['specurl'])
     soup = BeautifulSoup(res.text, 'html.parser')
 
     # dl.p-shopDetails > dt/dd構造でdtが項目、ddが値になっている。これを辞書形式にする
@@ -99,18 +87,18 @@ for mapinfo in mapinfo_list:
         shopspecs[dt.text] = replace_str(dd.text)
 
     # 店舗情報をマップ情報に追加
-    mapinfo.update(shopspecs)
+    shopinfo.update(shopspecs)
 
-pprint(mapinfo_list)
+pprint(shopinfo_list)
 
 # mapinfo_listをCSVファイルに書き出してみる。辞書内の値はすべて書き出す
 with open('mapdata.csv', 'w', newline='') as csvfile:
     # フィールド名がまばらだったので、生成する
     # すべてmapinfoからフィールド名を取得してsetで重複を取り除いて、リストに戻す
-    fieldnames = list(set().union(*mapinfo_list))
+    fieldnames = list(set().union(*shopinfo_list))
 
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
-    for mapinfo in mapinfo_list:
-        writer.writerow(mapinfo)
+    for shopinfo in shopinfo_list:
+        writer.writerow(shopinfo)
 
