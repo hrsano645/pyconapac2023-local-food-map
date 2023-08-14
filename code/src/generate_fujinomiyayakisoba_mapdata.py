@@ -1,11 +1,4 @@
 # 富士宮焼きそば学会のサイトから、マップ用のデータを生成する
-# メモ
-
-# * ここでは富士宮焼きそばのまっぷを作るためのデータを生成する
-# * ノウハウ的なことを伝えることにしてみる。
-# * データの取得と出力の間の前処理が結構大変なのよね。ここがあることがわかるとデータを作るという作業に馴染めると思う。
-# * 言いたいテーマはそこでいいかな。
-
 
 # インポート
 import csv
@@ -42,7 +35,7 @@ def get_shopinfo_list(url: str) -> list[dict]:
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'html.parser')
 
-    # これ以上ページがない場合。404が帰らないのでページ構造で判定する
+    # これ以上ページがない場合: 404が帰らないのでページ構造で判定する
     if not soup.find('div', class_='pagination') :
         return None
 
@@ -65,12 +58,24 @@ shopinfo_list = []
 
 # ページの中にある店舗一覧の中から、店舗名と詳細URLを取得
 # 最初のページを試す
-print("page.1")
+print("page.1 処理中...")
 shopinfo_list.extend(get_shopinfo_list(siteurl))
 
 # 2ページ目以降、ページネーションはすでに決まってるので、そのままループで回す
 
-# とりあえず絞って詳細収集する
+while True:
+    print(f"page.{pagenum} 処理中...")
+    pageurl = siteurl + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
+
+    # ページが取得できなかったらループを抜ける: エラー処理としては緩いです
+    if get_shopinfo_list(pageurl) is None:
+        break
+    shopinfo_list.extend(get_shopinfo_list(pageurl))
+
+    # 次のページへアクセスするためにページ数を増やす
+    pagenum =  pagenum + 1
+
+# debug:とりあえず絞って詳細収集する
 shopinfo_list = shopinfo_list[0:10]
 
 # 詳細URLからさらに詳細情報を取得する
