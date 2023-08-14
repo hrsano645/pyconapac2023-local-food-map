@@ -43,12 +43,12 @@ def get_shopinfo_list(url: str) -> list[dict]:
     shopinfo_tags = soup.find('div', class_='p-shopList').find_all("a")
     
     for shopinfo_tag in shopinfo_tags:
-        mapdata = {}
+        shopdata = {}
         # divは上から店名、住所、電話番号、定休日。
         # ここではurlと店名だけまとめたリストを作る
-        mapdata['specurl'] = shopinfo_tag.get('href')
-        mapdata['店名'] = replace_str(shopinfo_tag.find_all("div")[1].text)
-        shoplist.append(mapdata)
+        shopdata['specurl'] = shopinfo_tag.get('href')
+        shopdata['店名'] = replace_str(shopinfo_tag.find_all("div")[1].text)
+        shoplist.append(shopdata)
 
     return shoplist
 
@@ -62,7 +62,6 @@ print("page.1 処理中...")
 shopinfo_list.extend(get_shopinfo_list(siteurl))
 
 # 2ページ目以降、ページネーションはすでに決まってるので、そのままループで回す
-
 while True:
     print(f"page.{pagenum} 処理中...")
     pageurl = siteurl + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
