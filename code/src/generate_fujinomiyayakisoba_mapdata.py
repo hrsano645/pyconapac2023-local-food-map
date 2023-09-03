@@ -4,6 +4,8 @@
 import csv
 import requests
 from bs4 import BeautifulSoup
+import time
+import random
 
 # デバッグ用
 from pprint import pprint
@@ -13,7 +15,8 @@ pagenum = 2 # ページネーションのページ数。2から始める
 
 def replace_str(text: str) -> str:
     """
-    情報の中に入ってる文字から必要がない文字を取り除いたり置き換える。置き換える順番は辞書で書かれている順番
+    情報の中に入ってる文字から必要がない文字を取り除いたり置き換える。
+    置き換える順番は辞書で書かれている順番になるので注意
     """
     nouse_str_map = {
         "\n":"",
@@ -35,7 +38,7 @@ def get_shopinfo_list(url: str) -> list[dict]:
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'html.parser')
 
-    # これ以上ページがない場合: 404が帰らないのでページ構造で判定する
+    # これ以上ページがない場合の処理: サーバー側から404が返らないためページ構造で判定する
     if not soup.find('div', class_='pagination') :
         return None
 
@@ -51,6 +54,12 @@ def get_shopinfo_list(url: str) -> list[dict]:
         shoplist.append(shopdata)
 
     return shoplist
+
+def random_sleep(a: int,b: int) -> None:
+    """
+    aからbまでのランダムな時間を待つ
+    """
+    time.sleep(random.randint(a,b))
 
 
 # 学会の一覧から、店舗名と詳細情報用のURLを取得する。マップのセットにしておく
@@ -74,6 +83,9 @@ while True:
     # 次のページへアクセスするためにページ数を増やす
     pagenum =  pagenum + 1
 
+    # ランダム時間待つ
+    random_sleep(1,5)
+
 # debug:とりあえず絞って詳細収集する
 shopinfo_list = shopinfo_list[0:10]
 
@@ -92,6 +104,9 @@ for shopinfo in shopinfo_list:
 
     # 店舗情報をマップ情報に追加
     shopinfo.update(shopspecs)
+
+    # ランダム時間待つ
+    random_sleep(1,5)
 
 pprint(shopinfo_list)
 
