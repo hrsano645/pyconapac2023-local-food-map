@@ -27,7 +27,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 🏢: [株式会社佐野設計事務所](https://sano-design.info)  Founder
 * 🐍: PyCon mini Shizuoka Stuff
-* shizuoka.py / Unagi.py / Python駿河  CivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
+* shizuoka.py / Unagi.py / PythonSuruga, CivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
 * Hobby: DIY⚒️, IoT, Camp🏕️
 
 <!-- ここに画像をいくつか並べる PyCon shizu , DIY, CAMPとか 200x200で-->
