@@ -10,6 +10,8 @@ marp: true
 
 Hiroshi Sano
 
+![width:200px](./images/pyconapac2023_logo.png)
+
 ---
 
 ## Agenda
@@ -38,12 +40,12 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 🏢: [株式会社佐野設計事務所](https://sano-design.info)  Founder
 * 🐍: PyCon mini Shizuoka Stuff
-* shizuoka.py / Unagi.py / PythonSuruga, CivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
+* shizuoka.py / Unagi.py / PythonSurugaCivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
 * Hobby: DIY⚒️, IoT, Camp🏕️
 
 <!-- ここに画像をいくつか並べる PyCon shizu , DIY, CAMPとか 200x200で-->
 
-![sns-logo](./images/sns-logo_200x200.png)
+![w:200px](./images/sns-logo.jpg)![w:300px](./images/shizuokaLogo.png) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc9DDT9ootdGiDNZiGUybbHE5WRnm68hFp6XknmZc2lVttIBKJ180GVq0NE2qtcGRbx8OBVAak3E4qHa7H5iXw8gtQqkY4l6tWrFkIHUA96q1jcqE2_f) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc_3zxLYLoa5SSL_apqpJ3WCY9BRMfXRL4jUYaYouX3MvqiMU5eSCi8be6eQIvboRzgNZ3ZvdZAIET40tJD7I4y8dSHF6UByo-u8jXhLFFGv5rAw_kZU)
 
 ---
 
@@ -68,6 +70,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
   * 地元静岡県だと3回開催
 
 <!-- ここに3枚の静岡開催の写真を載せる -->
+![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
 このトークはその続きからトライできるコンテンツを目指して作りました
 
@@ -113,6 +116,14 @@ PyCampの次にトライできるものとして
 ---
 
 富士宮焼きそばマップを作りましょう！
+
+---
+
+## 今回のトークでの成果
+
+* お店情報をWEBスクレイピング
+* 表形式に整形 -> CSVファイル
+* Googleマイマップで呼び出す
 
 ---
 
@@ -166,7 +177,25 @@ PyCampの次にトライできるものとして
 
 requests + Beautiful Soup4
 
-<コード>
+```python
+# <コード>
+```
+
+---
+
+取得結果
+
+```python
+# <コード>
+```
+
+---
+
+少し余分な情報を外します
+
+```python
+# <コード>
+```
 
 ---
 
@@ -174,11 +203,17 @@ requests + Beautiful Soup4
 
 URLをもとに、アクセスする→エラーの場合は終了
 
+```python
+# <コード>
+```
+
 ---
 
 収集した詳細URLのリストを使って、お店情報収集
 
-<コード>
+```python
+# <コード>
+```
 
 ---
 
@@ -195,35 +230,41 @@ URLをもとに、アクセスする→エラーの場合は終了
 マップのもとになるデータを作成します
 
 * 情報を整理して書き出す
-* 地理情報を集める
+* [appendex]地理情報を集める
 
 ---
 
 情報を整理
 
-どんなフォーマットで書き出すか
+どのフォーマットで書き出すか
 
 ---
 
 よくある地理データ構造
 
-どのような使い方にもよります
-
 * CSV（区切り表形式）
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
 * KML（XML形式）
 
-（他にもあったら教えてください。）
+（どのような使い方にもよります。他にもあったら教えてください）
 
 ---
 
 CSVライブラリを使って書き出せます
+
+```python
+# <コード>
+```
 
 ---
 
 ちょっと一工夫: それぞれ入っているデータ項目が違う
 
 -> 全部対応した項目を一度作り、列見出し（ヘッダ）にする
+
+```python
+# <コード>
+```
 
 ---
 
@@ -294,9 +335,9 @@ PyCampやプログラミングを学んだ方の一歩先として！
 
 ### Let's try
 
-### 楽しいハッピーハッキングを
+### ハッピーハッキング
 
-### 楽しい旅行を
+### And, 楽しい旅行を
 
 ---
 
