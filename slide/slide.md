@@ -132,7 +132,7 @@ PyCampの次にトライできるものとして
 
 ---
 
-## 今回のトークでの成果
+## 今回のトークで目指すこと
 
 * お店情報をWEBスクレイピング
 * 表形式に整形 -> CSVファイル
@@ -142,7 +142,7 @@ PyCampの次にトライできるものとして
 
 ## ご当地グルメの情報はどこにあるか
 
-（img:flow.png）
+![bg left:40%](./images/programing-flow.png)
 
 * 地域の情報を収集
 * そこの情報は機械可読性があるか
@@ -157,13 +157,13 @@ PyCampの次にトライできるものとして
 
 ---
 
-富士宮焼きそば学会の公式サイト
+<!-- _footer: 富士宮焼きそば学会の公式サイトを見せます -->
 
 ---
 
 ## データを読む/取得する
 
-（img:flow.png）
+![bg left:40%](./images/programing-flow.png)
 
 * Webスクレイピングで収集する
 * 画像識別で加工を試みる
@@ -172,73 +172,197 @@ PyCampの次にトライできるものとして
 
 ---
 
-機械可読性はどちらも微妙だが、WEBスクレイピングはやりやすい
+**※ただし、多数のアクセスはしないように注意**
 
-※ただし多量のアクセスはしないように注意
-
----
-
-サイトの構造
+* 単純に迷惑かけがち
+* トラブルになりがち
+* 少し時間を置きながらアクセスしましょう
 
 ---
 
-（構造で取りたい情報をマッピング）
+利用するライブラリ
+
+* requests: HTTPアクセス→情報取得（今回はHTML）
+* Beautiful Soup4: HTML（マークアップ言語）解析と抽出
+
+```bash
+pip install requests beautifulesoup4
+```
+
+※:資料で説明しているのでスライドでは簡素にしてます。
 
 ---
 
-店名 +
+サイトの構造を見てみましょう
 
-requests + Beautiful Soup4
+<!-- 画像を隣に載せる -->
+
+---
+
+<!-- （構造で取りたい情報をマッピング） -->
+
+この構造からbeautifulesoup4を使って必要な情報を取り出します。
+
+---
+
+構造の中にあるタグから必要な情報を取得する
 
 ```python
-# <コード>
+import requests
+from bs4 import BeautifulSoup
+
+shopinfo_list = []
+res = requests.get(url)
+soup = BeautifulSoup(res.text, 'html.parser')
+
+
+# ここではdiv.p-shopList > a にURLとその中にお店情報がまとまっているので、aタグから取り出す
+shopinfo_tags = soup.find('div', class_='p-shopList').find_all("a")
+```
+
+---
+
+<!-- 画像:  -->
+
+aタグの下にあるそれぞれのタグから情報取得
+
+```python
+
+for shopinfo_tag in shopinfo_tags:
+    shopdata = {}
+    # aタグの子要素となるdivは上から店名、住所、電話番号、定休日。
+    # ここではurlと店名だけまとめたリストを作る
+    shopdata['specurl'] = shopinfo_tag.get('href')
+    shopdata['店名'] = shopinfo_tag.find_all("div")[1].text
+    shopinfo_list.append(shopdata)
+
 ```
 
 ---
 
 取得結果
 
-```python
-# <コード>
+```
+>>> shopinfo_list
+[{'specurl': 'https://umya-yakisoba.com/shop/3776/', '店名': 'お好焼\u3000あき'},
+{'specurl': 'https://umya-yakisoba.com/shop/3777/', '店名': 'あさ家'},
+{'specurl': 'https://umya-yakisoba.com/shop/3774/', '店名': 'あるばとろす'}, 
+{'specurl': 'https://umya-yakisoba.com/shop/3616/', '店名': 'いっぷく亭'}, 
+{'specurl': 'https://umya-yakisoba.com/shop/3772/', '店名': 'お好み食堂 伊東'}, 
+...
+]
 ```
 
 ---
 
-少し余分な情報を外します
+店名にある空白などを取り除きます
 
 ```python
-# <コード>
+def replace_str(text: str) -> str:
+  
+    remove_str_map = {
+        "\u3000": " ",
+    }
+    replaced_text = text
+    for key,val in remove_str_map.items():
+        replaced_text = replaced_text.replace(key,val)
+    return replaced_text
 ```
+
+↓
 
 ---
 
-ページネーションに対応する
-
-URLをもとに、アクセスする→エラーの場合は終了
-
 ```python
-# <コード>
+
+for shopinfo_tag in shopinfo_tags:
+    shopdata = {}
+    # divは上から店名、住所、電話番号、定休日。
+    # ここではurlと店名だけまとめたリストを作る
+    shopdata['specurl'] = shopinfo_tag.get('href')
+    # 店名にある余分な空白などを除去: relace_str関数
+    shopdata['店名'] = shopinfo_tag.find_all("div")[1].text
+    shopinfo_list.append(shopdata)
+
+```
+
+↓
+
+```
+>>> shopinfo_list
+[{'specurl': 'https://umya-yakisoba.com/shop/3776/', '店名': 'お好焼 あき'},
+ {'specurl': 'https://umya-yakisoba.com/shop/3777/', '店名': 'あさ家'},
+ {'specurl': 'https://umya-yakisoba.com/shop/3774/', '店名': 'あるばとろす'},
+ {'specurl': 'https://umya-yakisoba.com/shop/3616/', '店名': 'いっぷく亭'},
+...
+]
 ```
 
 ---
 
 収集した詳細URLのリストを使って、お店情報収集
 
+サイト構造をここでも載せる
+
+---
+
 ```python
-# <コード>
+for shopinfo in shopinfo_list:
+    # URLから店舗情報を取得
+    res = requests.get(shopinfo['specurl'])
+    soup = BeautifulSoup(res.text, 'html.parser')
+
+    # dl.p-shopDetails > dt/dd構造でdtが項目、ddが値になっている。これを辞書形式にする
+    shopspecs = {}
+    for dt, dd in zip(soup.find('dl', class_='p-shopDetails').find_all('dt'), soup.find('dl', class_='p-shopDetails').find_all('dd')):
+        # 値に 改行や空白文字があるので取り除く
+        shopspecs[dt.text] = replace_str(dd.text)
+
+    # 店舗情報をマップ情報に追加
+    shopinfo.update(shopspecs)
 ```
 
 ---
 
 最終的にできるデータ
 
-<データの様子>
+<!-- TODO: 2023-09-18 生データを使うのがいいか考えたほうがいいかな。 -->
+
+```python
+>>> from pprint import pprint
+>>> pprint(shopinfo_list)
+[{'TEL': '0544-27-0004',
+  'specurl': 'https://umya-yakisoba.com/shop/3776/',
+  'お店名ふりがな': 'あき',
+  'エリア': 'まちなか',
+  '住所': '富士宮市野中東町112-1',
+  '受入人数': '12',
+  '営業時間': '10:00－21:00',
+  '地図': 'B6',
+  '定休日': '火曜日',
+  '店名': 'お好焼 あき',
+  '料金目安': '350～600円',
+  '業種': '飲食店',
+  '焼き方': 'お店',
+  '調査員おすすめメニュー': 'キムチとチーズ入り',
+  '調査員が見た特徴': 'キャベツとネギが多めに入っている',
+  '駐車場': '4'},
+...
+]
+```
+
+---
+
+## まとめる
+
+※: この例ではサイトのページネーションに対応していません。
+ページネーションについては資料のコードで対応しています。
 
 ---
 
 ## データを加工/出力する
 
-（img:flow.png）
+![bg left:40%](./images/programing-flow.png)
 
 マップのもとになるデータを作成します
 
@@ -247,7 +371,7 @@ URLをもとに、アクセスする→エラーの場合は終了
 
 ---
 
-情報を整理
+## 情報を整理
 
 どのフォーマットで書き出すか
 
@@ -266,18 +390,55 @@ URLをもとに、アクセスする→エラーの場合は終了
 CSVライブラリを使って書き出せます
 
 ```python
-# <コード>
+import csv
+
+# ※これは実は動きません
+with open('mapdata.csv', 'w', newline='') as csvfile:
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    fieldnames = list(shopinfo_list[0].keys())
+    writer.writeheader()
+    for shopinfo in shopinfo_list:
+        writer.writerow(shopinfo)
 ```
 
 ---
 
-ちょっと一工夫: それぞれ入っているデータ項目が違う
-
--> 全部対応した項目を一度作り、列見出し（ヘッダ）にする
+各それぞれのお店情報の項目名が違う
 
 ```python
-# <コード>
+>>> shopinfo_list[0].keys()
+dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな', 
+'地図', '業種', '住所', 'TEL', '営業時間', '定休日', '受入人数', 
+'駐車場', '焼き方', '料金目安', '調査員おすすめメニュー', '調査員が見た特徴'])
+>>> shopinfo_list[2].keys()
+dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな', 
+'業種', '住所', 'TEL', '営業時間', '定休日', '受入人数', '駐車場', '料金目安'])
+>>> 
 ```
+
+---
+
+-> 全部対応した項目を一度作り、列見出し（ヘッダー）を作る
+
+```python
+with open('mapdata.csv', 'w', newline='') as csvfile:
+    # フィールド名がまばらだったので、生成する
+    # すべてmapinfoからフィールド名を取得してsetで重複を取り除いてリスト化
+    fieldnames = list(set().union(*shopinfo_list))
+
+    # 上のコードを丁寧に書くとこうなる
+    # all_fieladnames_by_shopinfo = (list(shopinfo.keys()) for shopinfo in shopinfo_list)
+    # fieldnames = list(set().union(*all_fieladnames_by_shopinfo))
+
+    writer = csv.DictWriter(csvfile, fidnames=fieldnames)
+    writer.writeheader()
+    for shopinfo in shopinfo_list:
+        writer.writerow(shopinfo)
+```
+
+---
+
+出力できたCSVファイル
 
 ---
 
@@ -285,19 +446,44 @@ CSVライブラリを使って書き出せます
 
 旅行中に使うためのツールとして
 
-* 巨人に乗る: Googleマイマップを使おう
+* 巨人に乗る: Googleマイマップで使おう
 * [appendex]ポータブルに扱う: 印刷をする
 * [appendex]専用のWEBアプリを作ろう
 
 ---
 
-Googleマイマップで読み込もう
+## Googleマイマップで使おう
 
-（説明しながら、図式を載せて使い方を見せていく）
+* Googleが提供するマップのピンや経路をオリジナルで作成できるサービス
+* アカウントに紐づいて、スマホ版Googleマップでも表示可能
 
 ---
 
-やっぱりスマホで使えると便利
+## 扱い方
+
+`https://www.google.com/maps/d/` へアクセスして利用します。
+
+写真1
+
+---
+
+---
+
+---
+
+やっぱりスマホで使えると便利！ナビとか🚗
+
+---
+
+## そのほかの選択肢
+
+※: オリジナルのマップを作るサービスは他にも多数あります。一例を載せておきます。
+※: 良し悪しや無料有料とあるので、使いやすいものを探すと良いと思います
+
+* OpenStreetMap uMap: <https://umap.openstreetmap.fr/ja/>
+* proxi: <https://www.proxi.co/>
+* [日本向け]国土地理院: <https://maps.gsi.go.jp/>
+* etc...
 
 ---
 
@@ -307,7 +493,7 @@ Googleマイマップで読み込もう
 
 ![bg left:40%](./images/programing-flow.png)
 
-## 今回のトークでの成果
+## 今回のトークで目指すこと
 
 * お店情報をWEBスクレイピング
 * 表形式に整形 -> CSVファイル
