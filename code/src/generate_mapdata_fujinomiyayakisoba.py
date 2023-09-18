@@ -18,13 +18,13 @@ def replace_str(text: str) -> str:
     情報の中に入ってる文字から必要がない文字を取り除いたり置き換える。
     置き換える順番は辞書で書かれている順番になるので注意
     """
-    remove_str_map = {
+    replace_str_map = {
         "\n":"",
         " ":"", # 半角スペースを消す
         "\u3000": " ",
     }
     replaced_text = text
-    for key,val in remove_str_map.items():
+    for key,val in replace_str_map.items():
         replaced_text = replaced_text.replace(key,val)
     return replaced_text
 

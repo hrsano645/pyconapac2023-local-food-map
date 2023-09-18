@@ -157,6 +157,10 @@ PyCampの次にトライできるものとして
 
 ---
 
+富士宮焼きそば学会 公式サイトを例にします。
+
+<https://umya-yakisoba.com/>
+
 <!-- _footer: 富士宮焼きそば学会の公式サイトを見せます -->
 
 ---
@@ -172,15 +176,19 @@ PyCampの次にトライできるものとして
 
 ---
 
+## WEBスクレイピングの注意点
+
 **※ただし、多数のアクセスはしないように注意**
 
 * 単純に迷惑かけがち
 * トラブルになりがち
-* 少し時間を置きながらアクセスしましょう
+* 試すときは少し時間を置きながらアクセスしましょう
+  * ランダム時間置いてみるとか
+  * 回数リミットをつけて待つようにする
 
 ---
 
-利用するライブラリ
+## 利用するライブラリ
 
 * requests: HTTPアクセス→情報取得（今回はHTML）
 * Beautiful Soup4: HTML（マークアップ言語）解析と抽出
@@ -189,7 +197,8 @@ PyCampの次にトライできるものとして
 pip install requests beautifulesoup4
 ```
 
-※:資料で説明しているのでスライドでは簡素にしてます。
+※:スライドではコードは説明用で動かない可能性があります。
+資料から動作するスクリプトをDL可能です。
 
 ---
 
@@ -260,11 +269,12 @@ for shopinfo_tag in shopinfo_tags:
 ```python
 def replace_str(text: str) -> str:
   
-    remove_str_map = {
+    replace_str_map = {
+        # 置き換えたい
         "\u3000": " ",
     }
     replaced_text = text
-    for key,val in remove_str_map.items():
+    for key,val in replace_str_map.items():
         replaced_text = replaced_text.replace(key,val)
     return replaced_text
 ```
@@ -510,7 +520,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 * 画像識別で収集
 * 他のサービスへの連携:
 
-（今回の知識をベースに何ができるか、各工程で２つぐらいは出しておく）
+（今回の知識をベースに何ができるか、各工程で2つぐらいは出しておく）
 
 ---
 
@@ -542,11 +552,11 @@ PyCampやプログラミングを学んだ方の一歩先として！
 
 ---
 
-### Let's try
+**Let's try**
 
-### ハッピーハッキング
+**Happy Hacking!!**
 
-### And, 楽しい旅行を
+**and, Have a nice travel!!**
 
 ---
 
@@ -555,6 +565,8 @@ PyCampやプログラミングを学んだ方の一歩先として！
 今回扱わなかった他の方法については、またどこかで解説できたら
 
 * 画像識別で収集する
+  * OCR, Googleなど
 * 緯度経度を収集
+  * 世界: Google?, 日本、 東大CGIS
 * 印刷物を作る -> HTML+テンプレートエンジンで印刷しやすいデータを生成
 * fletでWEBアプリを作る
