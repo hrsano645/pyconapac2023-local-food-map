@@ -76,6 +76,8 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
+![bg left:40%](./images/programing-flow.png)
+
 PyCampの次にトライできるものとして
 
 * データを読む/取り込む
@@ -84,7 +86,7 @@ PyCampの次にトライできるものとして
 
 3つの流れで、ご当地グルメマップを作ります
 
-（この3つをフローチャートで置いた画像を横に並べる -> flow.png）
+<!-- （この3つをフローチャートで置いた画像を横に並べる -> flow.png） -->
 
 ---
 
@@ -97,21 +99,32 @@ PyCampの次にトライできるものとして
 
 ---
 
-## 今回のご当地グルメ
+## 今回のお題
 
 ---
 
-<富士宮焼きそばの写真>
+## 富士宮焼きそば
+
+![h:500px](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Fujinomiya-yakisoba.jpg/800px-Fujinomiya-yakisoba.jpg)
+
+<!-- _footer: しんかわな, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, ウィキメディア・コモンズ経由 -->
 
 ---
 
-主に静岡の富士宮市周辺で食べられる焼きそば
-
-麺が中太蒸し麺。富士宮市で生産されている
+* 主に静岡の富士宮市周辺で食べられる焼きそば
+* B級グルメグランプリは殿堂入り
 
 ---
 
 家庭料理として、家でも作ります
+
+![h:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD) ![w:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qwaQCAlWagvvYmD6H9CvvnwXuWQRRi5REJr1_IF9nFP31GGuv3kJz6F7JKdIrYqs3mNANLi2IdXeUTWLDVHIuXnjbrFITbMtd5HxjEbYCVejEjsYQ)
+
+<!-- 麺が中太蒸し麺。富士宮市で生産されている -->
+
+---
+
+もう食べたいでしょ？🤤
 
 ---
 
@@ -292,6 +305,16 @@ Googleマイマップで読み込もう
 
 ---
 
+![bg left:40%](./images/programing-flow.png)
+
+## 今回のトークでの成果
+
+* お店情報をWEBスクレイピング
+* 表形式に整形 -> CSVファイル
+* Googleマイマップで呼び出す
+
+---
+
 今日学んだことを応用すると
 
 * WEBスクレイピングでデータ収集 -> 世の中のWEBサイトの収集
@@ -327,9 +350,9 @@ Googleマイマップで読み込もう
 
 PyCampやプログラミングを学んだ方の一歩先として！
 
-自分が使いたい、利用したいものやことでトライする。できたらとても感動する。
+自分が使いたい、利用したいものやことでトライする。
 
-おすすめ！
+できたらとても楽しいし感動する。おすすめ！
 
 ---
 
