@@ -18,13 +18,13 @@ def replace_str(text: str) -> str:
     情報の中に入ってる文字から必要がない文字を取り除いたり置き換える。
     置き換える順番は辞書で書かれている順番になるので注意
     """
-    nouse_str_map = {
+    remove_str_map = {
         "\n":"",
         " ":"", # 半角スペースを消す
         "\u3000": " ",
     }
     replaced_text = text
-    for key,val in nouse_str_map.items():
+    for key,val in remove_str_map.items():
         replaced_text = replaced_text.replace(key,val)
     return replaced_text
 
@@ -47,9 +47,10 @@ def get_shopinfo_list(url: str) -> list[dict]:
     
     for shopinfo_tag in shopinfo_tags:
         shopdata = {}
-        # divは上から店名、住所、電話番号、定休日。
+        # aタグの子要素となるdivは上から店名、住所、電話番号、定休日。
         # ここではurlと店名だけまとめたリストを作る
         shopdata['specurl'] = shopinfo_tag.get('href')
+        # 店名にある余分な空白などを除去: relace_str関数
         shopdata['店名'] = replace_str(shopinfo_tag.find_all("div")[1].text)
         shoplist.append(shopdata)
 
@@ -113,9 +114,15 @@ pprint(shopinfo_list)
 # mapinfo_listをCSVファイルに書き出してみる。辞書内の値はすべて書き出す
 with open('mapdata.csv', 'w', newline='') as csvfile:
     # フィールド名がまばらだったので、生成する
-    # すべてmapinfoからフィールド名を取得してsetで重複を取り除いて、リストに戻す
+    # すべてmapinfoからフィールド名を取得してsetで重複を取り除いてリスト化
+    
     fieldnames = list(set().union(*shopinfo_list))
 
+    # 上のコードを丁寧に書くとこうなる
+    # all_fieladnames_by_shopinfo = (list(shopinfo.keys()) for shopinfo in shopinfo_list)
+    # fieldnames = list(set().union(*all_fieladnames_by_shopinfo))
+
+    # CSVファイルに書き出す
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for shopinfo in shopinfo_list:
