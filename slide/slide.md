@@ -290,8 +290,8 @@ for shopinfo_tag in shopinfo_tags:
     # divは上から店名、住所、電話番号、定休日。
     # ここではurlと店名だけまとめたリストを作る
     shopdata['specurl'] = shopinfo_tag.get('href')
-    # 店名にある余分な空白などを除去: relace_str関数
-    shopdata['店名'] = shopinfo_tag.find_all("div")[1].text
+    shopdata['店名'] = replace_str(shopinfo_tag.find_all("div")[1].text)
+    
     shopinfo_list.append(shopdata)
 
 ```
@@ -324,7 +324,10 @@ for shopinfo in shopinfo_list:
 
     # dl.p-shopDetails > dt/dd構造でdtが項目、ddが値になっている。これを辞書形式にする
     shopspecs = {}
-    for dt, dd in zip(soup.find('dl', class_='p-shopDetails').find_all('dt'), soup.find('dl', class_='p-shopDetails').find_all('dd')):
+    for dt, dd in zip(
+      soup.find('dl', class_='p-shopDetails').find_all('dt'),
+      soup.find('dl', class_='p-shopDetails').find_all('dd')
+    ):
         # 値に 改行や空白文字があるので取り除く
         shopspecs[dt.text] = replace_str(dd.text)
 
