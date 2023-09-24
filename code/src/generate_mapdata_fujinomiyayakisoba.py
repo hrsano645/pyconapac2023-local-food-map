@@ -58,7 +58,10 @@ def get_shopinfo_list(url: str) -> list[dict]:
 
 def random_sleep(a: int,b: int) -> None:
     """
-    aからbまでのランダムな時間を待つ
+    aからbまでのランダムな時間を待つ。引数は秒数
+    args:
+        a: int
+        b: int
     """
     time.sleep(random.randint(a,b))
 

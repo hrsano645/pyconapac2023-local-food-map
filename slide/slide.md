@@ -38,10 +38,11 @@ Hiroshi Sano
 
 Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
-* 🏢: [株式会社佐野設計事務所](https://sano-design.info)  Founder
+* 🏢: [株式会社佐野設計事務所](https://sano-design.info) CEO
 * 🐍: PyCon mini Shizuoka Stuff
-* shizuoka.py / Unagi.py / PythonSurugaCivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
-* Hobby: DIY⚒️, IoT, Camp🏕️
+  * Shizuoka.py / Unagi.py / PythonSuruga
+* CivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
+* Hobby: Camp🏕️,DIY⚒️,IoT💡
 
 <!-- ここに画像をいくつか並べる PyCon shizu , DIY, CAMPとか 200x200で-->
 
@@ -65,8 +66,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## PyCampとは
 
+* Python Boot Camp
 * 日本全国で開催されているPythonの学習プログラム
-* Pythonの基礎から最後にプログラムを作るところまでを半日で行う
+* 半日をかけて、Pythonの基礎からプログラムを作る
   * 地元静岡県だと3回開催
 
 <!-- ここに3枚の静岡開催の写真を載せる -->
@@ -86,16 +88,16 @@ PyCampの次にトライできるものとして
 
 3つの流れで、ご当地グルメマップを作ります
 
-<!-- （この3つをフローチャートで置いた画像を横に並べる -> flow.png） -->
-
 ---
 
-## ご当地グルメ
+## ご当地グルメ？
 
 * 旅行がしやすくなった昨今
 * 観光地でご飯食べようにも色々悩む
   * 情報サイトは有名なものだらけ。美味しいところは他にもある
 * 公開されている情報をもとにマップを作って旅行計画するのはいかがでしょう？
+
+いわゆるB級グルメを食べましょう🤤
 
 ---
 
@@ -113,18 +115,24 @@ PyCampの次にトライできるものとして
 
 * 主に静岡の富士宮市周辺で食べられる焼きそば
 * B級グルメグランプリは殿堂入り
+* 麺は富士宮周辺でしか手に入らないのでまさにローカルフード
+  * （通販もあるけどね）
 
 ---
 
-家庭料理として、家でも作ります
+家庭料理でもある
 
 ![h:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD) ![w:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qwaQCAlWagvvYmD6H9CvvnwXuWQRRi5REJr1_IF9nFP31GGuv3kJz6F7JKdIrYqs3mNANLi2IdXeUTWLDVHIuXnjbrFITbMtd5HxjEbYCVejEjsYQ)
 
-<!-- 麺が中太蒸し麺。富士宮市で生産されている -->
+<!-- _footer: 多分月に数回は食べてる -->
 
 ---
 
-もう食べたいでしょ？🤤
+ところで、みなさん
+
+---
+
+もう食べたくなったでしょ？🤤
 
 ---
 
@@ -134,22 +142,28 @@ PyCampの次にトライできるものとして
 
 ## 今回のトークで目指すこと
 
-* お店情報をWEBスクレイピング
-* 表形式に整形 -> CSVファイル
+![bg left:40%](./images/programing-flow.png)
+
+* データを読む/取り込む
+* データを加工/出力する
+* データを使う/活用する
+
+↓
+
+* お店情報を探してWEBスクレイピング
+* データを整形 -> CSVファイルにする
 * Googleマイマップで呼び出す
 
 ---
 
 ## ご当地グルメの情報はどこにあるか
 
-![bg left:40%](./images/programing-flow.png)
-
 * 地域の情報を収集
 * そこの情報は機械可読性があるか
 
 ---
 
-観光情報
+## 観光情報を見てみる
 
 * 市役所
 * 観光協会
@@ -172,7 +186,8 @@ PyCampの次にトライできるものとして
 * Webスクレイピングで収集する
 * 画像識別で加工を試みる
 
-機械可読性はどちらも微妙だが、WEBスクレイピングはやりやすい
+機械可読性はどちらも微妙
+WEBスクレイピングはまだやりやすい
 
 ---
 
@@ -185,6 +200,7 @@ PyCampの次にトライできるものとして
 * 試すときは少し時間を置きながらアクセスしましょう
   * ランダム時間置いてみるとか
   * 回数リミットをつけて待つようにする
+  * サイトポリシーがあれば従う
 
 ---
 
@@ -366,10 +382,27 @@ for shopinfo in shopinfo_list:
 
 ---
 
-## まとめる
+## 上のコードの注意点
 
 ※: この例ではサイトのページネーションに対応していません。
 ページネーションについては資料のコードで対応しています。
+※: この例を使って、何度もWEBスクレイピングはしないようにしましょう。
+randomモジュールやtimeモジュールを組み合わせてランダム時間待機を実装してみる
+
+```python
+import random
+from time import sleep
+
+def random_sleep(a: int,b: int) -> None:
+    """
+    aからbまでのランダムな時間を待つ
+    
+    """
+    time.sleep(random.randint(a,b))
+
+# ランダム時間を待てるようにする
+random_sleep(2, 5)
+```
 
 ---
 
@@ -380,7 +413,7 @@ for shopinfo in shopinfo_list:
 マップのもとになるデータを作成します
 
 * 情報を整理して書き出す
-* [appendex]地理情報を集める
+* [付録]地理情報を集める
 
 ---
 
@@ -431,7 +464,7 @@ dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな',
 
 ---
 
--> 全部対応した項目を一度作り、列見出し（ヘッダー）を作る
+→ 全部対応した項目を一度作り、列見出し（ヘッダー）を作る
 
 ```python
 with open('mapdata.csv', 'w', newline='') as csvfile:
@@ -453,6 +486,8 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 出力できたCSVファイル
 
+![h:400px](./images/csv.png)
+
 ---
 
 ## データを使う/活用する
@@ -460,8 +495,8 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 旅行中に使うためのツールとして
 
 * 巨人に乗る: Googleマイマップで使おう
-* [appendex]ポータブルに扱う: 印刷をする
-* [appendex]専用のWEBアプリを作ろう
+* [付録]ポータブルに扱う: 印刷をする
+* [付録]専用のWEBアプリを作ろう
 
 ---
 
@@ -476,19 +511,38 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 `https://www.google.com/maps/d/` へアクセスして利用します。
 
-写真1
+「新しい地図を作成」ボタンを押す
+
+![h:300px](./images/google_mymap1.png)
 
 ---
 
----
+新規レイヤーへインポートする
+
+![h:400px](./images/google_mymap2.png)
 
 ---
 
-やっぱりスマホで使えると便利！ナビとか🚗
+![h:300px](./images/google_mymap3.png) ![h:300px](./images/google_mymap4.png)
+
+---
+
+マッピングされる
+
+![h:400px](./images/google_mymap5.png)
+
+---
+
+やっぱりスマホで使えると便利！ナビも使える🚗
+
+![h:400px](./images/google_mymap6.png)
 
 ---
 
 ## そのほかの選択肢
+
+今回はGoogleマップを上げましたが、推奨しているわけではなくて
+データを作るといろんなサービスと連携できることをお伝えしました。
 
 ※: オリジナルのマップを作るサービスは他にも多数あります。一例を載せておきます。
 ※: 良し悪しや無料有料とあるので、使いやすいものを探すと良いと思います
@@ -500,7 +554,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ---
 
-## まとめ
+## トークのまとめ
 
 ---
 
@@ -517,33 +571,33 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 今日学んだことを応用すると
 
 * WEBスクレイピングでデータ収集 -> 世の中のWEBサイトの収集
-（※一応扱いには気をつけましょう
-* WEB APIの扱いができると収集はもっと楽
-* データの書き出し: CSV以外にもjson, xlsx（openpyex, etc...）
+  **※扱いには気をつけましょう**
+  * WEB APIを扱えると収集や操作はもっと楽
+* データの書き出し: CSV以外にもjson, xlsx, etc....
 * 画像識別で収集
-* 他のサービスへの連携:
+* 他のサービスへの連携:データベースに入れたり
 
-（今回の知識をベースに何ができるか、各工程で2つぐらいは出しておく）
+<!-- （今回の知識をベースに何ができるか、各工程で2つぐらいは出しておく） -->
 
 ---
 
-どのエンジニアが一番やること
+どのエンジニアも一番やること
 
 * データを呼ぶ
 * データを書き出す
 
 ---
 
-* どこからデータを呼ぶか
+* どこから「データを呼ぶ」か
   * データベースから使う
   * データ分析で現実の統計データを使う
   * センサーデータで現実環境を使う
-* データを書き出すと
+* 「データを書き出す」とできる事
   * ユーザー情報をもとにレコメンデーション
   * データ分析でサービス改善
-  * センサーデータから製造工程改善
+  * 得られたデータを使って製造工程改善 -> 業務改善
 
-これができると、仕事もですが、人生まで改善できると思う。
+<!-- これができると、仕事も人生まで改善できます！ -->
 
 ---
 
@@ -551,25 +605,24 @@ PyCampやプログラミングを学んだ方の一歩先として！
 
 自分が使いたい、利用したいものやことでトライする。
 
-できたらとても楽しいし感動する。おすすめ！
+できたらとても楽しいし感動します。おすすめ！
 
 ---
-
-**Let's try**
 
 **Happy Hacking!!**
 
-**and, Have a nice travel!!**
+**and, Have a nice trip!!**
 
 ---
 
-## appendex
+## 付録
 
-今回扱わなかった他の方法については、またどこかで解説できたら
+今回扱わなかった他の方法については、またどこかで解説できたらと思います
 
-* 画像識別で収集する
+* 画像識別でお店情報を収集する
   * OCR, Googleなど
 * 緯度経度を収集
-  * 世界: Google?, 日本、 東大CGIS
-* 印刷物を作る -> HTML+テンプレートエンジンで印刷しやすいデータを生成
-* fletでWEBアプリを作る
+  * 世界: Google?
+  * 日本: 東大CGIS
+* 印刷物を作る -> テンプレートエンジンで印刷しやすいHTMLを生成
+* fletで自分専用のマップアプリを作る
