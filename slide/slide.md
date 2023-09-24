@@ -6,9 +6,9 @@ marp: true
 
 # Lets create Local Food Map
 
-## PyCon APAC 2023 10/25
+### PyCon APAC 2023 Day2
 
-Hiroshi Sano
+Hiroshi Sano / 佐野浩士
 
 ![width:200px](./images/pyconapac2023_logo.png)
 
@@ -53,6 +53,14 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ## 弊社紹介
 
 < 一枚絵の画像で、やっていることを紹介する >
+
+<!-- 
+
+* 弊社佐野設計事務所は機械設計を行う事務所です。主に自動車プラス金型を扱います。
+* 3D CADを扱いモデリングを行い、製品の3Dモデリングも請け負ってます。
+* 弊社では様々な業務の効率化をPythonやクラウドサービスを組み合わせて、実現しています。
+
+ -->
 
 ---
 
