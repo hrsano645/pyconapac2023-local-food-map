@@ -60,7 +60,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 * 3D CADを扱いモデリングを行い、製品の3Dモデリングも請け負ってます。
 * 弊社では様々な業務の効率化をPythonやクラウドサービスを組み合わせて、実現しています。
 
- -->
+-->
 
 ---
 
@@ -88,7 +88,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ![bg left:40%](./images/programing-flow.png)
 
-PyCampの次にトライできるものとして
+PyCampの次にトライできるテーマとして
 
 * データを読む/取り込む
 * データを加工/出力する
