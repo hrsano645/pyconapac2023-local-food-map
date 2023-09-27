@@ -8,7 +8,6 @@
 
 -e file:.
 anyio==3.7.1
-appnope==0.1.3
 argon2-cffi==21.3.0
 argon2-cffi-bindings==21.2.0
 arrow==1.2.3
@@ -23,6 +22,7 @@ cachetools==5.3.1
 certifi==2023.7.22
 cffi==1.15.1
 charset-normalizer==3.2.0
+colorama==0.4.6
 comm==0.1.4
 debugpy==1.6.7
 decorator==5.1.1
@@ -73,7 +73,6 @@ overrides==7.3.1
 packaging==23.1
 pandocfilters==1.5.0
 parso==0.8.3
-pexpect==4.8.0
 pickleshare==0.7.5
 pillow==10.0.0
 platformdirs==3.10.0
@@ -82,7 +81,6 @@ prompt-toolkit==3.0.39
 proto-plus==1.22.3
 protobuf==4.23.4
 psutil==5.9.5
-ptyprocess==0.7.0
 pure-eval==0.2.2
 pyasn1==0.5.0
 pyasn1-modules==0.3.0
@@ -91,6 +89,8 @@ pygments==2.15.1
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 python-json-logger==2.0.7
+pywin32==306
+pywinpty==2.0.11
 pyyaml==6.0.1
 pyzmq==25.1.0
 qtconsole==5.4.3

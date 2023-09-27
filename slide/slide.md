@@ -1,5 +1,6 @@
 ---
 marp: true
+
 ---
 
 # ご当地グルメマップを作ろう  
@@ -27,8 +28,11 @@ Hiroshi Sano / 佐野浩士
 
 付録含めてすでに公開されています。
 
-* github: Starくれー！
+* GitHubリポジトリ: Starくれー！
+  <https://github.com/hrsano645/pyconapac2023-local-food-map>
+
 * このslide
+  <https://github.com/hrsano645/pyconapac2023-local-food-map/slide/slide.me>
 
 あとでトライしたい方は参考にしてね
 
@@ -191,8 +195,10 @@ PyCampの次にトライできるテーマとして
 
 ![bg left:40%](./images/programing-flow.png)
 
-* Webスクレイピングで収集する
-* 画像識別で加工を試みる
+* **Webスクレイピングで収集する**
+* [付録]画像識別で加工を試みる
+
+<br>
 
 機械可読性はどちらも微妙
 WEBスクレイピングはまだやりやすい
@@ -228,13 +234,15 @@ pip install requests beautifulesoup4
 
 サイトの構造を見てみましょう
 
-<!-- 画像を隣に載せる -->
+![h:500px](./images/gakkai_1.png)
 
 ---
 
 <!-- （構造で取りたい情報をマッピング） -->
 
 この構造からbeautifulesoup4を使って必要な情報を取り出します。
+
+![h:500px](./images/gakkai_1-1.png)
 
 ---
 
@@ -336,7 +344,7 @@ for shopinfo_tag in shopinfo_tags:
 
 収集した詳細URLのリストを使って、お店情報収集
 
-サイト構造をここでも載せる
+![h:500px](./images/gakkai_2.png)
 
 ---
 
@@ -395,7 +403,7 @@ for shopinfo in shopinfo_list:
 ※: この例ではサイトのページネーションに対応していません。
 ページネーションについては資料のコードで対応しています。
 ※: この例を使って、何度もWEBスクレイピングはしないようにしましょう。
-randomモジュールやtimeモジュールを組み合わせてランダム時間待機を実装してみる
+randomモジュールやtimeモジュールを組み合わせてランダム時間待機します
 
 ```python
 import random
@@ -420,7 +428,7 @@ random_sleep(2, 5)
 
 マップのもとになるデータを作成します
 
-* 情報を整理して書き出す
+* **情報を整理して表形式ファイルで書き出す**
 * [付録]地理情報を集める
 
 ---
@@ -429,11 +437,13 @@ random_sleep(2, 5)
 
 どのフォーマットで書き出すか
 
+<!-- 挿絵何か入れる。表とかタイルデータとか、点群とか -->
+
 ---
 
 よくある地理データ構造
 
-* CSV（区切り表形式）
+* **CSV（区切り表形式）**
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
 * KML（XML形式）
 
@@ -502,7 +512,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 旅行中に使うためのツールとして
 
-* 巨人に乗る: Googleマイマップで使おう
+* **巨人に乗る: Googleマイマップで使おう**
 * [付録]ポータブルに扱う: 印刷をする
 * [付録]専用のWEBアプリを作ろう
 
@@ -631,6 +641,42 @@ PyCampやプログラミングを学んだ方の一歩先として！
   * OCR, Googleなど
 * 緯度経度を収集
   * 世界: Google?
-  * 日本: 東大CGIS
+  * 日本: 東大CSIS
 * 印刷物を作る -> テンプレートエンジンで印刷しやすいHTMLを生成
 * fletで自分専用のマップアプリを作る
+
+---
+
+## 画像識別
+
+* Google Cloud Vision
+  *
+
+---
+
+## 位置情報
+
+* 世界: Google Maps Platform ->
+  <https://developers.google.com/maps/documentation/geocoding/overview?hl=ja>
+  
+* 日本: 東大CSIS -> jageocoder
+  <https://github.com/t-sagara/jageocoder>
+
+---
+
+## 印刷用マップを作ってみる
+
+印刷用のHTMLファイルを作って印刷してみる
+
+* Mapboxで概要と詳細の地図を用意
+* お店の情報をテーブルで埋め込む
+* 印刷用にCSSで調整する
+
+---
+
+## モバイル向けのWEBアプリ
+
+<!-- 実際に作成してみる -->
+
+* staticなページで埋め込んで作ってみる
+* <https://flet.dev/docs/guides/python/publishing-static-website/>
