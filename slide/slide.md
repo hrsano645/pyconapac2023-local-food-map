@@ -28,13 +28,13 @@ Hiroshi Sano / 佐野浩士
 
 付録含めてすでに公開されています。
 
-* GitHubリポジトリ: Starくれー！
+* GitHub: Starくれー！
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
 
-* このスライド
+* スライド
   <https://github.com/hrsano645/pyconapac2023-local-food-map/slide/slide.me>
 
-あとでトライしたい方は参考にしてね
+あとでトライしたい方は参考にしてみてください。
 
 ---
 
@@ -47,8 +47,6 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
   * Shizuoka.py / Unagi.py / PythonSuruga
 * CivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
 * Hobby: Camp🏕️,DIY⚒️,IoT💡
-
-<!-- ここに画像をいくつか並べる PyCon shizu , DIY, CAMPとか 200x200で-->
 
 ![w:200px](./images/sns-logo.jpg)![w:300px](./images/shizuokaLogo.png) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc9DDT9ootdGiDNZiGUybbHE5WRnm68hFp6XknmZc2lVttIBKJ180GVq0NE2qtcGRbx8OBVAak3E4qHa7H5iXw8gtQqkY4l6tWrFkIHUA96q1jcqE2_f) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc_3zxLYLoa5SSL_apqpJ3WCY9BRMfXRL4jUYaYouX3MvqiMU5eSCi8be6eQIvboRzgNZ3ZvdZAIET40tJD7I4y8dSHF6UByo-u8jXhLFFGv5rAw_kZU)
 
@@ -80,8 +78,8 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * Python Boot Camp
 * 日本全国で開催されているPythonの学習プログラム
-* 半日をかけて、Pythonの基礎からプログラムを作る
-  * 地元静岡県だと3回開催
+* 半日をかけて、Pythonの基礎を学び、簡単なプログラムを作る
+  * 地元静岡県だと3回開催されている
 
 <!-- ここに3枚の静岡開催の写真を載せる -->
 ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
@@ -133,11 +131,11 @@ PyCampの次にトライできるテーマとして
 
 ---
 
-家庭料理でもある
+家庭料理としても食べられる
 
 ![h:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD) ![w:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qwaQCAlWagvvYmD6H9CvvnwXuWQRRi5REJr1_IF9nFP31GGuv3kJz6F7JKdIrYqs3mNANLi2IdXeUTWLDVHIuXnjbrFITbMtd5HxjEbYCVejEjsYQ)
 
-<!-- _footer: 多分月に数回は食べてる -->
+<!-- _footer: 地元の人は、多分月に数回は食べてる -->
 
 ---
 
@@ -149,7 +147,15 @@ PyCampの次にトライできるテーマとして
 
 ---
 
-富士宮焼きそばマップを作りましょう！
+**富士宮焼きそばマップを作りましょう！**
+
+---
+
+## 今回のトークで目指すこと
+
+* お店情報を探してWEBスクレイピング
+* データを整形 -> CSVファイルにする
+* Googleマイマップで呼び出す
 
 ---
 
@@ -181,6 +187,8 @@ PyCampの次にトライできるテーマとして
 * 市役所
 * 観光協会
 * ご当地グルメの公式サイト（よく〇〇学会とも言われる）
+
+<!-- _footer: グルメ情報サイトを見たらそこで終了ですよ -->
 
 ---
 
@@ -222,7 +230,7 @@ WEBスクレイピングはまだやりやすい
 ## 利用するライブラリ
 
 * requests: HTTPアクセス→情報取得（今回はHTML）
-* Beautiful Soup4: HTML（マークアップ言語）解析と抽出
+* BeautifulSoup4: HTML（マークアップ言語）解析と抽出
 
 ```bash
 pip install requests beautifulesoup4
@@ -331,7 +339,7 @@ for shopinfo_tag in shopinfo_tags:
 
 ↓
 
-```
+```python
 >>> shopinfo_list
 [{'specurl': 'https://umya-yakisoba.com/shop/3776/', '店名': 'お好焼 あき'},
  {'specurl': 'https://umya-yakisoba.com/shop/3777/', '店名': 'あさ家'},
@@ -346,6 +354,8 @@ for shopinfo_tag in shopinfo_tags:
 収集した詳細URLのリストを使って、お店情報収集
 
 ![h:500px](./images/gakkai_2.png)
+
+`dt`と`dd`タグは記述リスト、説明リストと呼ばれるHTMLタグ
 
 ---
 
@@ -366,6 +376,7 @@ for shopinfo in shopinfo_list:
 
     # 店舗情報をマップ情報に追加
     shopinfo.update(shopspecs)
+    # INFO:ここにランダム待機時間があるとよさそう
 ```
 
 ---
@@ -442,17 +453,19 @@ random_sleep(2, 5)
 
 ---
 
-よくある地理データ構造
+よくある地理データ構造、フォーマット形式
 
-* **CSV（区切り表形式）**
+* **CSV（区切り表形式、汎用性高）**
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
 * KML（XML形式）
 
-（どのような使い方にもよります。他にもあったら教えてください）
+<!-- _footer: ※どのような使い方にもよります。他にもあったら教えてください -->
 
 ---
 
 CSVライブラリを使って書き出せます
+
+`csv.DictWriter`を使うとdictのkeyを使って列見出しを用意できる
 
 ```python
 import csv
@@ -468,7 +481,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ---
 
-各それぞれのお店情報の項目名が違う
+各それぞれのお店情報の項目名が違う🤔
 
 ```python
 >>> shopinfo_list[0].keys()
@@ -483,7 +496,7 @@ dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな',
 
 ---
 
-→ 全部対応した項目を一度作り、列見出し（ヘッダー）を作る
+→ 全部対応した項目を用意して列の見出し名（ヘッダー名）を作る
 
 ```python
 with open('mapdata.csv', 'w', newline='') as csvfile:
@@ -491,7 +504,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
     # すべてmapinfoからフィールド名を取得してsetで重複を取り除いてリスト化
     fieldnames = list(set().union(*shopinfo_list))
 
-    # 上のコードを丁寧に書くとこうなる
+    # 上のコードを丁寧に書く
     # all_fieladnames_by_shopinfo = (list(shopinfo.keys()) for shopinfo in shopinfo_list)
     # fieldnames = list(set().union(*all_fieladnames_by_shopinfo))
 
@@ -507,13 +520,15 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ![h:400px](./images/csv.png)
 
+<!-- TODO: 2023-09-30 表形式のものを見せる -->
+
 ---
 
 ## データを使う/活用する
 
 旅行中に使うためのツールとして
 
-* **巨人に乗る: Googleマイマップで使おう**
+* **巨人の肩に乗る: Googleマイマップで使おう**
 * [付録]ポータブルに扱う: 印刷をする
 * [付録]専用のWEBアプリを作ろう
 
@@ -542,11 +557,13 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ---
 
+（操作していく）
+
 ![h:300px](./images/google_mymap3.png) ![h:300px](./images/google_mymap4.png)
 
 ---
 
-マッピングされる
+マッピングされました🎉
 
 ![h:400px](./images/google_mymap5.png)
 
@@ -560,11 +577,11 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ## そのほかの選択肢
 
-今回はGoogleマップを上げましたが、推奨しているわけではなくて
+今回はGoogleマップを利用しましたが、推奨しているわけではなくて
 データを作るといろんなサービスと連携できることをお伝えしました。
 
 ※: オリジナルのマップを作るサービスは他にも多数あります。一例を載せておきます。
-※: 良し悪しや無料有料とあるので、使いやすいものを探すと良いと思います
+※: それぞれ特徴や無料有料とあるので、使いやすいものを探すと良いと思います
 
 * OpenStreetMap uMap: <https://umap.openstreetmap.fr/ja/>
 * proxi: <https://www.proxi.co/>
@@ -585,6 +602,12 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 * 表形式に整形 -> CSVファイル
 * Googleマイマップで呼び出す
 
+↓
+
+* データを読む/取り込む
+* データを加工/出力する
+* データを使う/活用する
+
 ---
 
 今日学んだことを応用すると
@@ -593,8 +616,8 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
   **※扱いには気をつけましょう**
   * WEB APIを扱えると収集や操作はもっと楽
 * データの書き出し: CSV以外にもjson, xlsx, etc....
-* 画像識別で収集
-* 他のサービスへの連携:データベースに入れたり
+<!-- * 画像識別で収集 -->
+* 他のサービスへの連携:データベースに入れたりもできますよね
 
 <!-- （今回の知識をベースに何ができるか、各工程で2つぐらいは出しておく） -->
 
@@ -602,29 +625,31 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 どのエンジニアも一番やること
 
-* データを呼ぶ
+* データを取り出す
 * データを書き出す
 
 ---
 
-* どこから「データを呼ぶ」か
+* どこから「データを取り出す」か
   * データベースから使う
   * データ分析で現実の統計データを使う
   * センサーデータで現実環境を使う
-* 「データを書き出す」とできる事
+* どこへ「データを書き出す」か
   * ユーザー情報をもとにレコメンデーション
   * データ分析でサービス改善
-  * 得られたデータを使って製造工程改善 -> 業務改善
+  * 得られたデータを使って製造工程改善 -> 業務改善にも
 
-<!-- これができると、仕事も人生まで改善できます！ -->
+<!-- _footer: これができると、仕事も人生まで改善できますよ！ -->
 
 ---
 
-PyCampやプログラミングを学んだ方の一歩先として！
+## 伝えたいこと
+
+PyCampやPythonの基礎を学んだ方の一歩先として！
 
 自分が使いたい、利用したいものやことでトライする。
 
-できたらとても楽しいし感動します。おすすめ！
+できたらとても楽しいし感動します。オススメです！
 
 ---
 
@@ -638,6 +663,8 @@ PyCampやプログラミングを学んだ方の一歩先として！
 
 今回扱わなかった他の方法については、またどこかで解説できたらと思います
 
+* WEBスクレイピングしづらいサイトもカバーする
+  * selenium + headless chrome
 * 画像識別でお店情報を収集する
   * OCR, Googleなど
 * 緯度経度を収集
@@ -648,10 +675,21 @@ PyCampやプログラミングを学んだ方の一歩先として！
 
 ---
 
+## Webスクレイピング: Seleniumの例
+
+* 動的な（javascriptなど利用した）サイトはrequestsで対応が難しいことがあります
+* 本物のブラウザ + ブラウザ自動操作ツール(selenium)を使った例も載せておきます
+
+-> url
+
+---
+
 ## 画像識別
 
+結構難しい分野（ちょっと自信ない）
+
 * Google Cloud Vision
-  *
+  * -> url
 
 ---
 
@@ -659,9 +697,12 @@ PyCampやプログラミングを学んだ方の一歩先として！
 
 * 世界: Google Maps Platform ->
   <https://developers.google.com/maps/documentation/geocoding/overview?hl=ja>
-  
+  * -> url
+
 * 日本: 東大CSIS -> jageocoder
   <https://github.com/t-sagara/jageocoder>
+  * 無料で利用できる（リクエスト数は少なめがよし
+  * -> url
 
 ---
 
@@ -673,11 +714,19 @@ PyCampやプログラミングを学んだ方の一歩先として！
 * お店の情報をテーブルで埋め込む
 * 印刷用にCSSで調整する
 
+-> url
+
 ---
 
 ## モバイル向けのWEBアプリ
 
 <!-- 実際に作成してみる -->
 
-* staticなページで埋め込んで作ってみる
-* <https://flet.dev/docs/guides/python/publishing-static-website/>
+実験的な扱いです。うまく動かなければ...
+
+* fletを使って作ってみました
+* staticなページでWASMとして埋め込んで作ってみる
+  * <https://flet.dev/docs/guides/python/publishing-static-website/>
+* ※サイト自体の公開はしません
+
+-> url
