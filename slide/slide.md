@@ -24,7 +24,7 @@ Hiroshi Sano / 佐野浩士
 
 ---
 
-## 今回の資料
+## Today's Document
 
 付録含めてすでに公開されています。
 
@@ -32,7 +32,7 @@ Hiroshi Sano / 佐野浩士
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
 
 * スライド
-  <https://github.com/hrsano645/pyconapac2023-local-food-map/slide/slide.me>
+  <https://github.com/hrsano645/pyconapac2023-local-food-map/slide/slide.pdf>
 
 あとでトライしたい方は参考にしてみてください。
 
@@ -52,9 +52,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-## 弊社紹介
+![bg](./images/sano-design_info.png)
 
-< 一枚絵の画像で、やっていることを紹介する >
+<!-- < 一枚絵の画像で、やっていることを紹介する > -->
 
 <!-- 
 
@@ -63,6 +63,8 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 * 弊社では様々な業務の効率化をPythonやクラウドサービスを組み合わせて、実現しています。
 
 -->
+
+<!-- https://docs.google.com/presentation/d/1R27Ej6DU-1OFnp_O_BaMM7id1xYeb11Xtimmurcfaco/edit#slide=id.p -->
 
 ---
 
@@ -74,9 +76,8 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-## PyCampとは
+## PyCamp:Python Boot Campとは
 
-* Python Boot Camp
 * 日本全国で開催されているPythonの学習プログラム
 * 半日をかけて、Pythonの基礎を学び、簡単なプログラムを作る
   * 地元静岡県だと3回開催されている
@@ -88,18 +89,6 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-![bg left:40%](./images/programing-flow.png)
-
-PyCampの次にトライできるテーマとして
-
-* データを読む/取り込む
-* データを加工/出力する
-* データを使う/活用する
-
-3つの流れで、ご当地グルメマップを作ります
-
----
-
 ## ご当地グルメ？
 
 * 旅行がしやすくなった昨今
@@ -107,7 +96,7 @@ PyCampの次にトライできるテーマとして
   * 情報サイトは有名なものだらけ。美味しいところは他にもある
 * 公開されている情報をもとにマップを作って旅行計画するのはいかがでしょう？
 
-いわゆるB級グルメを食べましょう🤤
+いわゆる**B級グルメ**を食べましょう🤤
 
 ---
 
@@ -129,6 +118,8 @@ PyCampの次にトライできるテーマとして
   * （通販もあるけどね）
 * 最近NYで開催されたコナモングランプリで優勝した
 
+<!-- ここに、どの地点で食べられるか地図を入れる、材料がまとまった絵を載せる -->
+
 ---
 
 家庭料理としても食べられる
@@ -144,6 +135,8 @@ PyCampの次にトライできるテーマとして
 ---
 
 もう食べたくなったでしょ？🤤
+
+<!-- _footer: このあとはパーティ🎉ですし、お腹空きましたね🤤 -->
 
 ---
 
@@ -173,6 +166,8 @@ PyCampの次にトライできるテーマとして
 * データを加工/出力する
 * データを使う/活用する
 
+この流れで説明していきます。
+
 ---
 
 ## ご当地グルメの情報はどこにあるか
@@ -180,9 +175,7 @@ PyCampの次にトライできるテーマとして
 * 地域の情報を収集
 * そこの情報は機械可読性があるか
 
----
-
-## 観光情報を見てみる
+観光情報を見てみる
 
 * 市役所
 * 観光協会
@@ -204,7 +197,7 @@ PyCampの次にトライできるテーマとして
 
 ![bg left:40%](./images/programing-flow.png)
 
-* **Webスクレイピングで収集する**
+* **WEBスクレイピングで収集する**
 * [付録]画像識別で加工を試みる
 
 <br>
@@ -233,7 +226,8 @@ WEBスクレイピングはまだやりやすい
 * BeautifulSoup4: HTML（マークアップ言語）解析と抽出
 
 ```bash
-pip install requests beautifulesoup4
+pip install requests
+pip install beautifulesoup4
 ```
 
 ※:スライドのコードは説明向けです。そのままだと動かないこともあります
@@ -241,13 +235,9 @@ pip install requests beautifulesoup4
 
 ---
 
+<!-- TODO: 2023-10-08 挿絵を入れ替え: divのお店名が展開されている状態、もう少し横長でよし -->
+
 サイトの構造を見てみましょう
-
-![h:500px](./images/gakkai_1.png)
-
----
-
-<!-- TODO: 2023-09-24 （構造で取りたい情報をマッピング） -->
 
 この構造からbeautifulesoup4を使って必要な情報を取り出します。
 
@@ -447,11 +437,7 @@ random_sleep(2, 5)
 
 ## 情報を整理
 
-どのフォーマットで書き出すか
-
-<!-- 挿絵何か入れる。表とかタイルデータとか、点群とか -->
-
----
+どのフォーマットで書き出すか？
 
 よくある地理データ構造、フォーマット形式
 
@@ -501,7 +487,7 @@ dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな',
 ```python
 with open('mapdata.csv', 'w', newline='') as csvfile:
     # フィールド名がまばらだったので、生成する
-    # すべてmapinfoからフィールド名を取得してsetで重複を取り除いてリスト化
+    # すべてshopinfoのキーからフィールド名を取得してsetで重複を取り除いてリスト化
     fieldnames = list(set().union(*shopinfo_list))
 
     # 上のコードを丁寧に書く
@@ -532,9 +518,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 * [付録]ポータブルに扱う: 印刷をする
 * [付録]専用のWEBアプリを作ろう
 
----
-
-## Googleマイマップで使おう
+Googleマイマップで使おう
 
 * Googleが提供するマップのピンや経路をオリジナルで作成できるサービス
 * アカウントに紐づいて、スマホ版Googleマップでも表示可能
@@ -623,7 +607,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ---
 
-どのエンジニアも一番やること
+プログラミングでもっとも行うこと
 
 * データを取り出す
 * データを書き出す
@@ -675,7 +659,7 @@ PyCampやPythonの基礎を学んだ方の一歩先として！
 
 ---
 
-## Webスクレイピング: Seleniumの例
+## WEBスクレイピング: Seleniumの例
 
 * 動的な（javascriptなど利用した）サイトはrequestsで対応が難しいことがあります
 * 本物のブラウザ + ブラウザ自動操作ツール(selenium)を使った例も載せておきます
