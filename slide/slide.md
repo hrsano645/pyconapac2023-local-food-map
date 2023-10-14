@@ -1,6 +1,6 @@
 ---
 marp: true
-
+paginate: true
 ---
 
 # ご当地グルメマップを作ろう  
@@ -68,6 +68,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ## トークのモチベーション
 
 * ご当地のグルメの**情報収集してマップを作り**ましょう！食べに行きましょう！
+  * ご当地グルメ=B級グルメ
 * PyCampを終えた人向け: **Pythonでデータを集めて作り利用するプロセス**
   を学べます
 
@@ -77,12 +78,23 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 日本全国で開催されているPythonの学習プログラム
 * 半日をかけて、Pythonの基礎を学び、簡単なプログラムを作る
-  * 地元静岡県だと3回開催されている
+* テキストをもとに講師とTAがサポートをします
+
+<pycampのロゴ> 公式サイトの画像
+
+このトークはその続きからトライできるコンテンツを目指して作りました
+
+
+
+---
+
+## PyCampの様子
+
+* 地元静岡県だと3回開催されている
 
 <!-- ここに3枚の静岡開催の写真を載せる -->
 ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
-このトークはその続きからトライできるコンテンツを目指して作りました
 
 ---
 
@@ -97,7 +109,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-## 今回のお題
+## 今回のお題: 本題のご当地グルメ
 
 ---
 
