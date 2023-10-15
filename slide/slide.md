@@ -3,9 +3,9 @@ marp: true
 paginate: true
 ---
 
-# ご当地グルメマップを作ろう  
+# ご当地グルメマップを作ろう！  
 
-# Lets create Local Food Map
+# Lets create! Local Food Map
 
 ### PyCon APAC 2023 Day2
 
@@ -57,9 +57,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 <!-- 
 
 * 株式会社佐野設計事務所は主に自動車プレス金型の機械設計を行う事務所です。
-* 3D CADを扱った設計や、製品の3Dモデリングも請け負ってます。
-* 様々な業務の効率化をPythonやクラウドサービスを組み合わせて、実現しています。そのノウハウもあり
-* 同じく製造業よりの方がいらっしゃいましたら後ほどのパーティでぜひお話ししましょう！
+* 3D CADを扱った設計や、金型関連、製品形状の3Dモデリングを扱っております。
+* 設計データをデジタルで扱うこともあり、様々な業務の効率化をPython＋クラウドサービスを組み合わせて、実現しています。
+* 製造業とデジタル化で取り組まれていたり、ご興味ある方がいましたら、後ほどのパーティでぜひお話ししましょう！
 
 -->
 
@@ -68,9 +68,12 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ## トークのモチベーション
 
 * ご当地のグルメの**情報収集してマップを作り**ましょう！食べに行きましょう！
-  * ご当地グルメ=B級グルメ
+  * ご当地グルメ=B級グルメのこと
 * PyCampを終えた人向け: **Pythonでデータを集めて作り利用するプロセス**
   を学べます
+  * 初学者向けの内容です
+  * 話すこと: トークお題をPythonで実装する方法
+  * 話さないこと: Pythonの文法周りの解説
 
 ---
 
@@ -78,34 +81,19 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 日本全国で開催されているPythonの学習プログラム
 * 半日をかけて、Pythonの基礎を学び、簡単なプログラムを作る
-* テキストをもとに講師とTAがサポートをします
+* 専用テキストと講師とTAがサポートします
 
-<pycampのロゴ> 公式サイトの画像
+<pycampのロゴ> <テキストの画像>
 
 このトークはその続きからトライできるコンテンツを目指して作りました
-
-
 
 ---
 
 ## PyCampの様子
 
-* 地元静岡県だと3回開催されている
-
 <!-- ここに3枚の静岡開催の写真を載せる -->
 ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
-
----
-
-## ご当地グルメ？
-
-* 旅行がしやすくなった昨今
-* 観光地でご飯食べようにも色々悩む
-  * 情報サイトは有名なものだらけ。美味しいところは他にもある
-* 公開されている情報をもとにマップを作って旅行計画するのはいかがでしょう？
-
-いわゆる**B級グルメ**を食べましょう🤤
 
 ---
 
@@ -122,18 +110,15 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ---
 
 * 主に静岡の富士宮市周辺で食べられる焼きそば
+  * 家庭料理としてもよく食べる
 * B級グルメグランプリは殿堂入り
 * 麺は富士宮周辺でしか手に入らないのでまさにローカルフード
   * （通販もあるけどね）
 * 最近NYで開催されたコナモングランプリで優勝した
 
+![h:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD) 
+
 <!-- ここに、どの地点で食べられるか地図を入れる、材料がまとまった絵を載せる -->
-
----
-
-家庭料理としても食べられる
-
-![h:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD) ![w:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qwaQCAlWagvvYmD6H9CvvnwXuWQRRi5REJr1_IF9nFP31GGuv3kJz6F7JKdIrYqs3mNANLi2IdXeUTWLDVHIuXnjbrFITbMtd5HxjEbYCVejEjsYQ)
 
 <!-- _footer: 地元の人は、多分月に数回は食べてる -->
 
@@ -155,9 +140,10 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## 今回のトークで目指すこと
 
-* お店情報を探してWEBスクレイピング
-* データを整形 -> CSVファイルにする
-* Googleマイマップで呼び出す
+1. お店情報を探してWEBスクレイピング
+2. データを整形 -> CSVファイルにする
+3. Googleマイマップで呼び出す
+
 
 ---
 
@@ -165,15 +151,15 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ![bg left:40%](./images/programing-flow.png)
 
-* お店情報を探してWEBスクレイピング
-* データを整形 -> CSVファイルにする
-* Googleマイマップで呼び出す
+1. お店情報を探してWEBスクレイピング
+2. データを整形 -> CSVファイルにする
+3. Googleマイマップで呼び出す
 
 ↓
 
-* データを読む/取り込む
-* データを加工/出力する
-* データを使う/活用する
+1. データを読む/取り込む
+2. データを加工/出力する
+3. データを使う/活用する
 
 この流れで説明していきます。
 
@@ -182,27 +168,28 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ## ご当地グルメの情報はどこにあるか
 
 * 地域の情報を収集
-* そこの情報は機械可読性があるか
+* **そこの情報は機械可読性があるか**
+  * 大体が紙ベースが多い...（画像識別の手段は使える）
 
-観光情報を見てみる
+観光情報を探ってみると...
 
-* 市役所
-* 観光協会
+* 市役所で紹介されていたり
+* 観光協会で紹介されていたり
 * ご当地グルメの公式サイト（よく〇〇学会とも言われる）
 
-<!-- _footer: グルメ情報サイトを見たらそこで終了ですよ -->
+<!-- _footer: グルメ情報サイトを見たらそこで試合終了ですよ -->
 
 ---
 
-富士宮焼きそば学会 公式サイトを例にします。
+今回は、富士宮焼きそば学会 公式サイトを例にしています。
 
-<https://umya-yakisoba.com/>
+<https://umya-yakisoba.com/shop/>
 
 <!-- _footer: 富士宮焼きそば学会の公式サイトを見せます -->
 
 ---
 
-## データを読む/取得する
+## 1.データを読む/取得する
 
 ![bg left:40%](./images/programing-flow.png)
 
@@ -216,12 +203,12 @@ WEBスクレイピングはまだやりやすい
 
 ---
 
-## WEBスクレイピングの注意点
+## ⚠️WEBスクレイピングの注意点⚠️
 
-**※ただし、多数のアクセスはしないように注意**
+**※スクレイピング対象のサイトへ多数のアクセスはしないように注意**
 
-* 単純に迷惑かけがち
-* トラブルになりがち
+* 単純に迷惑かけがち、トラブルになりがち
+* 作ってる最中にエラーでアクセスが止まらないとか
 * 試すときは少し時間を置きながらアクセスしましょう
   * ランダム時間置いてみるとか
   * 回数リミットをつけて待つようにする
@@ -248,7 +235,7 @@ pip install beautifulesoup4
 
 サイトの構造を見てみましょう
 
-この構造からbeautifulesoup4を使って必要な情報を取り出します。
+この構造からBeautifulSoup4を使って必要な情報を取り出します。
 
 ![h:500px](./images/gakkai_1-1.png)
 
@@ -260,6 +247,7 @@ pip install beautifulesoup4
 import requests
 from bs4 import BeautifulSoup
 
+url = "https://umya-yakisoba.com/shop/"
 shopinfo_list = []
 res = requests.get(url)
 soup = BeautifulSoup(res.text, 'html.parser')
@@ -271,57 +259,11 @@ shopinfo_tags = soup.find('div', class_='p-shopList').find_all("a")
 
 ---
 
-<!-- 画像:  -->
+<!-- 画像: どこの構造を取り出しているかの画像を載せる -->
 
-aタグの下にあるそれぞれのタグから情報取得
+<!-- ![bg:40%]() -->
 
-```python
-
-for shopinfo_tag in shopinfo_tags:
-    shopdata = {}
-    # aタグの子要素となるdivは上から店名、住所、電話番号、定休日。
-    # ここではurlと店名だけまとめたリストを作る
-    shopdata['specurl'] = shopinfo_tag.get('href')
-    shopdata['店名'] = shopinfo_tag.find_all("div")[1].text
-    shopinfo_list.append(shopdata)
-
-```
-
----
-
-取得結果
-
-```
->>> shopinfo_list
-[{'specurl': 'https://umya-yakisoba.com/shop/3776/', '店名': 'お好焼\u3000あき'},
-{'specurl': 'https://umya-yakisoba.com/shop/3777/', '店名': 'あさ家'},
-{'specurl': 'https://umya-yakisoba.com/shop/3774/', '店名': 'あるばとろす'}, 
-{'specurl': 'https://umya-yakisoba.com/shop/3616/', '店名': 'いっぷく亭'}, 
-{'specurl': 'https://umya-yakisoba.com/shop/3772/', '店名': 'お好み食堂 伊東'}, 
-...
-]
-```
-
----
-
-店名にある空白などを取り除きます
-
-```python
-def replace_str(text: str) -> str:
-  
-    replace_str_map = {
-        # 置き換えたい
-        "\u3000": " ",
-    }
-    replaced_text = text
-    for key,val in replace_str_map.items():
-        replaced_text = replaced_text.replace(key,val)
-    return replaced_text
-```
-
-↓
-
----
+aタグの下にあるそれぞれのタグから必要な情報を取得する
 
 ```python
 
@@ -336,7 +278,11 @@ for shopinfo_tag in shopinfo_tags:
 
 ```
 
-↓
+※ replace_str関数は店名に出てくる空白文字を置き換えたりする独自に作った関数（後述します）
+
+---
+
+お店の詳細URL, 店名を手に入れた！
 
 ```python
 >>> shopinfo_list
@@ -382,7 +328,6 @@ for shopinfo in shopinfo_list:
 
 最終的にできるデータ
 
-<!-- TODO: 2023-09-18 生データを使うのがいいか考えたほうがいいかな。 -->
 
 ```python
 >>> from pprint import pprint
@@ -403,7 +348,8 @@ for shopinfo in shopinfo_list:
   '調査員おすすめメニュー': 'キムチとチーズ入り',
   '調査員が見た特徴': 'キャベツとネギが多めに入っている',
   '駐車場': '4'},
-...
+  # 以下お店情報の辞書が続いて入る
+  # ...
 ]
 ```
 
@@ -411,10 +357,33 @@ for shopinfo in shopinfo_list:
 
 ## 上のコードの注意点
 
+*: サイト上に
 ※: この例ではサイトのページネーションに対応していません。
 ページネーションについては資料のコードで対応しています。
 ※: この例を使って、何度もWEBスクレイピングはしないようにしましょう。
 randomモジュールやtimeモジュールを組み合わせてランダム時間待機します
+
+---
+
+replace_str関数: 店名にある空白などを取り除きます。
+
+```python
+def replace_str(text: str) -> str:
+  
+    replace_str_map = {
+        # 置き換え対象文字列:置き換え先の文字列 
+        "\u3000": " ",
+    }
+    replaced_text = text
+    for key,val in replace_str_map.items():
+        replaced_text = replaced_text.replace(key,val)
+    return replaced_text
+```
+
+
+---
+
+ランダム時間動作を待機できる関数の例
 
 ```python
 import random
@@ -433,7 +402,7 @@ random_sleep(2, 5)
 
 ---
 
-## データを加工/出力する
+## 2.データを加工/出力する
 
 ![bg left:40%](./images/programing-flow.png)
 
@@ -463,45 +432,10 @@ CSVライブラリを使って書き出せます
 `csv.DictWriter`を使うとdictのkeyを使って列見出しを用意できる
 
 ```python
-import csv
-
-# ※これは実は動きません
 with open('mapdata.csv', 'w', newline='') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    fieldnames = list(shopinfo_list[0].keys())
-    writer.writeheader()
-    for shopinfo in shopinfo_list:
-        writer.writerow(shopinfo)
-```
-
----
-
-各それぞれのお店情報の項目名が違う🤔
-
-```python
->>> shopinfo_list[0].keys()
-dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな', 
-'地図', '業種', '住所', 'TEL', '営業時間', '定休日', '受入人数', 
-'駐車場', '焼き方', '料金目安', '調査員おすすめメニュー', '調査員が見た特徴'])
->>> shopinfo_list[2].keys()
-dict_keys(['specurl', '店名', 'エリア', 'お店名ふりがな', 
-'業種', '住所', 'TEL', '営業時間', '定休日', '受入人数', '駐車場', '料金目安'])
->>> 
-```
-
----
-
-→ 全部対応した項目を用意して列の見出し名（ヘッダー名）を作る
-
-```python
-with open('mapdata.csv', 'w', newline='') as csvfile:
-    # フィールド名がまばらだったので、生成する
-    # すべてshopinfoのキーからフィールド名を取得してsetで重複を取り除いてリスト化
-    fieldnames = list(set().union(*shopinfo_list))
-
-    # 上のコードを丁寧に書く
-    # all_fieladnames_by_shopinfo = (list(shopinfo.keys()) for shopinfo in shopinfo_list)
-    # fieldnames = list(set().union(*all_fieladnames_by_shopinfo))
+    # 今回の例では、辞書のキー（お店の詳細情報の各項目）が部分的にあったりなかったりしたので
+    # 全ての辞書のキーから全ての項目をカバーしたリストを生成する
+    fieldnames = list(set().union(*shopinfo_list)
 
     writer = csv.DictWriter(csvfile, fidnames=fieldnames)
     writer.writeheader()
@@ -544,15 +478,23 @@ Googleマイマップで使おう
 
 ---
 
-新規レイヤーへインポートする
+新規レイヤーへCSVファイルをインポートします
 
 ![h:400px](./images/google_mymap2.png)
 
 ---
 
-（操作していく）
+マップへのポイントは住所を使います
 
-![h:300px](./images/google_mymap3.png) ![h:300px](./images/google_mymap4.png)
+![h:300px](./images/google_mymap3.png)
+
+---
+
+マップへポイントしてポイントした部分への簡易説明（マーカー）を入れる。
+
+今回は店名にしました。
+
+![h:300px](./images/google_mymap4.png)
 
 ---
 
@@ -562,13 +504,13 @@ Googleマイマップで使おう
 
 ---
 
-やっぱりスマホで使えると便利！ナビも使える🚗
+スマホで見ることもできます！📱
 
 ![h:400px](./images/google_mymap6.png)
 
 ---
 
-## そのほかの選択肢
+## マッピングのそのほか選択肢
 
 今回はGoogleマップを利用しましたが、推奨しているわけではなくて
 データを作るといろんなサービスと連携できることをお伝えしました。
@@ -591,15 +533,15 @@ Googleマイマップで使おう
 
 ## 今回のトークで目指すこと
 
-* お店情報をWEBスクレイピング
-* 表形式に整形 -> CSVファイル
-* Googleマイマップで呼び出す
+1. お店情報をWEBスクレイピング
+2. 表形式に整形 -> CSVファイル
+3. Googleマイマップで呼び出す
 
 ↓
 
-* データを読む/取り込む
-* データを加工/出力する
-* データを使う/活用する
+1. データを読む/取り込む
+2. データを加工/出力する
+3. データを使う/活用する
 
 ---
 
@@ -609,30 +551,42 @@ Googleマイマップで使おう
   **※扱いには気をつけましょう**
   * WEB APIを扱えると収集や操作はもっと楽
 * データの書き出し: CSV以外にもjson, xlsx, etc....
-<!-- * 画像識別で収集 -->
 * 他のサービスへの連携:データベースに入れたりもできますよね
 
-<!-- （今回の知識をベースに何ができるか、各工程で2つぐらいは出しておく） -->
 
 ---
 
-プログラミングでもっとも行うこと
+プログラミングでもっとも行われる行為
 
-* データを取り出す
-* データを書き出す
+* **どこから** データを取り出すか
+* **どこへ** データを書き出すか
 
+<!-- _footer: もちろん他にもありますが、概念として最終的にデータ/ファイルを扱うことが多いと思います -->
 ---
 
-* どこから「データを取り出す」か
-  * データベースから使う
+<!-- ここの狙い、データ取り出し、書き出しの具体的な作業名をあてる。それがどういった行為かも載せる -->
+
+* **どこから** データを取り出すか
+  * データベースから取り出す
   * データ分析で現実の統計データを使う
   * センサーデータで現実環境を使う
-* どこへ「データを書き出す」か
-  * ユーザー情報をもとにレコメンデーション
+* **どこへ** データを書き出すか
   * データ分析でサービス改善
-  * 得られたデータを使って製造工程改善 -> 業務改善にも
+  * 得られたデータを使って業務工程改善
+  
+よくあるパターン
+  
+---
 
-<!-- _footer: これができると、仕事も人生まで改善できますよ！ -->
+* **どこから** データを取り出すか
+  * データベースから取り出す -> データベースと接続するライブラリ
+  * データ分析で現実の統計データを使う -> オープンデータ API/ファイル
+  * センサーデータで現実環境を使う -> ハードウェア操作のライブラリ
+* **どこへ** データを書き出すか
+  * データ分析でサービス改善 -> 可視化して統計処理
+  * 得られたデータを使って業務工程改善 -> オートメーション, 他システム連携
+
+データの流れを意識すると、作りたいプログラムの流れも理解しやすい  
 
 ---
 
@@ -640,9 +594,9 @@ Googleマイマップで使おう
 
 PyCampやPythonの基礎を学んだ方の一歩先として！
 
-自分が使いたい、利用したいものやことでトライする。
+自分が使いたい、利用したい、ものやことでトライしましょう！
 
-できたらとても楽しいし感動します。オススメです！
+それたできたら、とても楽しいし感動します。オススメです！
 
 ---
 
@@ -653,6 +607,8 @@ PyCampやPythonの基礎を学んだ方の一歩先として！
 ---
 
 ## 付録
+
+---
 
 今回扱わなかった他の方法については、またどこかで解説できたらと思います
 
