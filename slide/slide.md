@@ -3,7 +3,7 @@ marp: true
 paginate: true
 ---
 
-# ご当地グルメマップを作ろう！  
+# ご当地グルメマップを作ろう  
 
 # Lets create! Local Food Map
 
@@ -67,13 +67,12 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## トークのモチベーション
 
-* ご当地のグルメの**情報収集してマップを作り**ましょう！食べに行きましょう！
+* ご当地グルメを**情報収集してマップを作りましょう！** 食べに行きましょう！
   * ご当地グルメ=B級グルメのこと
-* PyCampを終えた人向け: **Pythonでデータを集めて作り利用するプロセス**
-  を学べます
+* PyCampを終えた人に: **Pythonでデータを集めて作り利用するプロセス**   を学べます
   * 初学者向けの内容です
-  * 話すこと: トークお題をPythonで実装する方法
-  * 話さないこと: Pythonの文法周りの解説
+  * 話すこと: トークお題をPythonで実装する過程
+  * 話さないこと: Pythonの基礎や文法の解説
 
 ---
 
@@ -81,9 +80,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 日本全国で開催されているPythonの学習プログラム
 * 半日をかけて、Pythonの基礎を学び、簡単なプログラムを作る
-* 専用テキストと講師とTAがサポートします
+  * 専用テキストを元に講師とTAがサポート
 
-<pycampのロゴ> <テキストの画像>
+![h:300px](./images/pycamp-text.png)
 
 このトークはその続きからトライできるコンテンツを目指して作りました
 
@@ -94,6 +93,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 <!-- ここに3枚の静岡開催の写真を載せる -->
 ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
+<!-- _footer: 静岡県3回目の様子 -->
 
 ---
 
@@ -110,14 +110,11 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ---
 
 * 主に静岡の富士宮市周辺で食べられる焼きそば
-  * 家庭料理としてもよく食べる
+* 麺は富士宮周辺でしか手に入らない。まさにローカルフード
 * B級グルメグランプリは殿堂入り
-* 麺は富士宮周辺でしか手に入らないのでまさにローカルフード
-  * （通販もあるけどね）
 * 最近NYで開催されたコナモングランプリで優勝した
 
-![h:400px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD) 
-
+![h:300px](./images/fujinomiyashi-map2.png) ![h:300px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD)
 <!-- ここに、どの地点で食べられるか地図を入れる、材料がまとまった絵を載せる -->
 
 <!-- _footer: 地元の人は、多分月に数回は食べてる -->
@@ -128,7 +125,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-もう食べたくなったでしょ？🤤
+もう食べたくなりましたね？🤤
 
 <!-- _footer: このあとはパーティ🎉ですし、お腹空きましたね🤤 -->
 
@@ -143,7 +140,6 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 1. お店情報を探してWEBスクレイピング
 2. データを整形 -> CSVファイルにする
 3. Googleマイマップで呼び出す
-
 
 ---
 
@@ -161,7 +157,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 2. データを加工/出力する
 3. データを使う/活用する
 
-この流れで説明していきます。
+この流れで説明します。
 
 ---
 
@@ -181,7 +177,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-今回は、富士宮焼きそば学会 公式サイトを例にしています。
+今回は、富士宮焼きそば学会の公式サイトを例にしています。
 
 <https://umya-yakisoba.com/shop/>
 
@@ -189,7 +185,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-## 1.データを読む/取得する
+## 1. データを読む/取得する
 
 ![bg left:40%](./images/programing-flow.png)
 
@@ -237,7 +233,7 @@ pip install beautifulesoup4
 
 この構造からBeautifulSoup4を使って必要な情報を取り出します。
 
-![h:500px](./images/gakkai_1-1.png)
+![h:500px](./images/gakkai_1.png)
 
 ---
 
@@ -328,7 +324,6 @@ for shopinfo in shopinfo_list:
 
 最終的にできるデータ
 
-
 ```python
 >>> from pprint import pprint
 >>> pprint(shopinfo_list)
@@ -357,33 +352,39 @@ for shopinfo in shopinfo_list:
 
 ## 上のコードの注意点
 
-*: サイト上に
-※: この例ではサイトのページネーションに対応していません。
-ページネーションについては資料のコードで対応しています。
+※: サイト上に見えない文字があることがあります → 文字列置換をしましょう
+
 ※: この例を使って、何度もWEBスクレイピングはしないようにしましょう。
 randomモジュールやtimeモジュールを組み合わせてランダム時間待機します
 
+※: この例ではサイトのページネーションに対応していません
+ページネーションについては資料のコードで対応しています
+
 ---
 
-replace_str関数: 店名にある空白などを取り除きます。
+店名にある空白などを取り除きます。
 
 ```python
 def replace_str(text: str) -> str:
   
     replace_str_map = {
-        # 置き換え対象文字列:置き換え先の文字列 
+        # 置き換え対象文字列:置き換え先の文字列
+        "\n":"", 
         "\u3000": " ",
     }
     replaced_text = text
     for key,val in replace_str_map.items():
         replaced_text = replaced_text.replace(key,val)
     return replaced_text
-```
 
+# 例:
+print(replace_str("お好焼\u3000さの"))
+# お好焼 さの
+```
 
 ---
 
-ランダム時間動作を待機できる関数の例
+ランダム時間待機できる関数の例
 
 ```python
 import random
@@ -391,7 +392,7 @@ from time import sleep
 
 def random_sleep(a: int,b: int) -> None:
     """
-    aからbまでのランダムな時間を待つ
+    aからbまでのランダムな秒数を待つ
     
     """
     time.sleep(random.randint(a,b))
@@ -429,7 +430,7 @@ random_sleep(2, 5)
 
 CSVライブラリを使って書き出せます
 
-`csv.DictWriter`を使うとdictのkeyを使って列見出しを用意できる
+`csv.DictWriter`を使うと辞書のキーを使って列見出しを用意できる
 
 ```python
 with open('mapdata.csv', 'w', newline='') as csvfile:
@@ -447,9 +448,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 出力できたCSVファイル
 
-![h:400px](./images/csv.png)
-
-<!-- TODO: 2023-09-30 表形式のものを見せる -->
+![h:300px](./images/csv1.png)![h:300px](./images/csv2.png)
 
 ---
 
@@ -474,33 +473,33 @@ Googleマイマップで使おう
 
 「新しい地図を作成」ボタンを押す
 
-![h:300px](./images/google_mymap1.png)
+![h:350px](./images/google_mymap1.png)
 
 ---
 
 新規レイヤーへCSVファイルをインポートします
 
-![h:400px](./images/google_mymap2.png)
+![h:450px](./images/google_mymap2.png)
 
 ---
 
 マップへのポイントは住所を使います
 
-![h:300px](./images/google_mymap3.png)
+![h:450px](./images/google_mymap3.png)
 
 ---
 
-マップへポイントしてポイントした部分への簡易説明（マーカー）を入れる。
+ポイントした部分への簡易説明（マーカー）を入れる。
 
 今回は店名にしました。
 
-![h:300px](./images/google_mymap4.png)
+![h:450px](./images/google_mymap4.png)
 
 ---
 
 マッピングされました🎉
 
-![h:400px](./images/google_mymap5.png)
+![h:450px](./images/google_mymap5.png)
 
 ---
 
@@ -553,7 +552,6 @@ Googleマイマップで使おう
 * データの書き出し: CSV以外にもjson, xlsx, etc....
 * 他のサービスへの連携:データベースに入れたりもできますよね
 
-
 ---
 
 プログラミングでもっとも行われる行為
@@ -564,8 +562,6 @@ Googleマイマップで使おう
 <!-- _footer: もちろん他にもありますが、概念として最終的にデータ/ファイルを扱うことが多いと思います -->
 ---
 
-<!-- ここの狙い、データ取り出し、書き出しの具体的な作業名をあてる。それがどういった行為かも載せる -->
-
 * **どこから** データを取り出すか
   * データベースから取り出す
   * データ分析で現実の統計データを使う
@@ -573,9 +569,7 @@ Googleマイマップで使おう
 * **どこへ** データを書き出すか
   * データ分析でサービス改善
   * 得られたデータを使って業務工程改善
-  
-よくあるパターン
-  
+
 ---
 
 * **どこから** データを取り出すか
@@ -586,11 +580,11 @@ Googleマイマップで使おう
   * データ分析でサービス改善 -> 可視化して統計処理
   * 得られたデータを使って業務工程改善 -> オートメーション, 他システム連携
 
-データの流れを意識すると、作りたいプログラムの流れも理解しやすい  
+<!-- _footer: データの流れを意識すると、作りたいプログラムの流れも理解しやすい -->
 
 ---
 
-## 伝えたいこと
+## 最後に伝えたいこと
 
 PyCampやPythonの基礎を学んだ方の一歩先として！
 
