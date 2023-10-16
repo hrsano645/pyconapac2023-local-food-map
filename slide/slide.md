@@ -11,24 +11,28 @@ paginate: true
 
 Hiroshi Sano / 佐野浩士
 
-![width:200px](./images/pyconapac2023_logo.png)
+![width:260px](./images/pyconapac2023_logo.png)
 
 ---
 
 ## Agenda
 
 * トークのモチベーション
-* 情報を集めよう: どの情報を使うか
-* マップデータを作ろう: 情報収集をアウトプット
-* 利用先を考えよう: サービスと連携しよう
+* 今回のトークでできること
+
+1. お店情報をデータにする: WEBスクレイピング
+2. データを整形をする: CSVファイルにする
+3. データを使ってみる: Googleマイマップで呼び出す
+
+* まとめ
 
 ---
 
 ## Today's Document
 
-付録含めてすでに公開されています。
+付録含めて公開されています
 
-* GitHub: Starくれー！
+* GitHubリポジトリ: Starくれー！
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
 
 * スライド
@@ -42,10 +46,10 @@ Hiroshi Sano / 佐野浩士
 
 Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
-* 🏢: [株式会社佐野設計事務所](https://sano-design.info) CEO
+* 🏢: 株式会社佐野設計事務所 CEO
 * 🐍: PyCon mini Shizuoka Stuff
-  * Shizuoka.py / Unagi.py / PythonSuruga
-* CivicTech, [Startup Weekend Oganizatior](https://swfuji.doorkeeper.jp)
+  * Shizuoka.py / Unagi.py / Python駿河
+* CivicTech, Startup Weekend organizer
 * Hobby: Camp🏕️,DIY⚒️,IoT💡
 
 ![w:200px](./images/sns-logo.jpg)![w:300px](./images/shizuokaLogo.png) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc9DDT9ootdGiDNZiGUybbHE5WRnm68hFp6XknmZc2lVttIBKJ180GVq0NE2qtcGRbx8OBVAak3E4qHa7H5iXw8gtQqkY4l6tWrFkIHUA96q1jcqE2_f) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc_3zxLYLoa5SSL_apqpJ3WCY9BRMfXRL4jUYaYouX3MvqiMU5eSCi8be6eQIvboRzgNZ3ZvdZAIET40tJD7I4y8dSHF6UByo-u8jXhLFFGv5rAw_kZU)
@@ -90,7 +94,6 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## PyCampの様子
 
-<!-- ここに3枚の静岡開催の写真を載せる -->
 ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
 <!-- _footer: 静岡県3回目の様子 -->
@@ -111,11 +114,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 主に静岡の富士宮市周辺で食べられる焼きそば
 * 麺は富士宮周辺でしか手に入らない。まさにローカルフード
-* B級グルメグランプリは殿堂入り
-* 最近NYで開催されたコナモングランプリで優勝した
+* B級グルメグランプリ殿堂入り、NYで開催されたコナモングランプリで優勝した
 
-![h:300px](./images/fujinomiyashi-map2.png) ![h:300px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD)
-<!-- ここに、どの地点で食べられるか地図を入れる、材料がまとまった絵を載せる -->
+![h:300px](./images/fujinomiyashi-map.png) ![h:300px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD)
 
 <!-- _footer: 地元の人は、多分月に数回は食べてる -->
 
@@ -135,21 +136,24 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-## 今回のトークで目指すこと
+## 今回のトークでできること
 
-1. お店情報を探してWEBスクレイピング
-2. データを整形 -> CSVファイルにする
-3. Googleマイマップで呼び出す
+1. お店情報をデータにする: WEBスクレイピング
+2. データを整形をする: CSVファイルにする
+3. データを使ってみる: Googleマイマップで呼び出す
 
 ---
 
-## 今回のトークで目指すこと
+## 今回のトークでできること
 
 ![bg left:40%](./images/programing-flow.png)
 
-1. お店情報を探してWEBスクレイピング
-2. データを整形 -> CSVファイルにする
-3. Googleマイマップで呼び出す
+1. お店情報をデータにする:
+   WEBスクレイピング
+2. データを整形をする:
+   CSVファイルにする
+3. データを使ってみる:
+   Googleマイマップで呼び出す
 
 ↓
 
@@ -157,7 +161,19 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 2. データを加工/出力する
 3. データを使う/活用する
 
-この流れで説明します。
+---
+
+## 1. データを読む/取得する
+
+![bg left:40%](./images/programing-flow.png)
+
+* **WEBスクレイピングで収集する**
+* [付録]画像識別で加工を試みる
+
+<br>
+
+機械可読性はどちらも微妙
+WEBスクレイピングはまだやりやすい
 
 ---
 
@@ -185,33 +201,6 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-## 1. データを読む/取得する
-
-![bg left:40%](./images/programing-flow.png)
-
-* **WEBスクレイピングで収集する**
-* [付録]画像識別で加工を試みる
-
-<br>
-
-機械可読性はどちらも微妙
-WEBスクレイピングはまだやりやすい
-
----
-
-## ⚠️WEBスクレイピングの注意点⚠️
-
-**※スクレイピング対象のサイトへ多数のアクセスはしないように注意**
-
-* 単純に迷惑かけがち、トラブルになりがち
-* 作ってる最中にエラーでアクセスが止まらないとか
-* 試すときは少し時間を置きながらアクセスしましょう
-  * ランダム時間置いてみるとか
-  * 回数リミットをつけて待つようにする
-  * サイトポリシーがあれば従う
-
----
-
 ## 利用するライブラリ
 
 * requests: HTTPアクセス→情報取得（今回はHTML）
@@ -226,10 +215,6 @@ pip install beautifulesoup4
 資料のリポジトリから動作するスクリプトをDL可能です。
 
 ---
-
-<!-- TODO: 2023-10-08 挿絵を入れ替え: divのお店名が展開されている状態、もう少し横長でよし -->
-
-サイトの構造を見てみましょう
 
 この構造からBeautifulSoup4を使って必要な情報を取り出します。
 
@@ -268,13 +253,13 @@ for shopinfo_tag in shopinfo_tags:
     # divは上から店名、住所、電話番号、定休日。
     # ここではurlと店名だけまとめたリストを作る
     shopdata['specurl'] = shopinfo_tag.get('href')
-    shopdata['店名'] = replace_str(shopinfo_tag.find_all("div")[1].text)
+    shopdata['店名'] = replace_text(shopinfo_tag.find_all("div")[1].text)
     
     shopinfo_list.append(shopdata)
 
 ```
 
-※ replace_str関数は店名に出てくる空白文字を置き換えたりする独自に作った関数（後述します）
+※ replace_text関数は店名に出てくる空白文字を置き換えたりする独自に作った関数（後述します）
 
 ---
 
@@ -313,7 +298,7 @@ for shopinfo in shopinfo_list:
       soup.find('dl', class_='p-shopDetails').find_all('dd')
     ):
         # 値に 改行や空白文字があるので取り除く
-        shopspecs[dt.text] = replace_str(dd.text)
+        shopspecs[dt.text] = replace_text(dd.text)
 
     # 店舗情報をマップ情報に追加
     shopinfo.update(shopspecs)
@@ -354,7 +339,7 @@ for shopinfo in shopinfo_list:
 
 ※: サイト上に見えない文字があることがあります → 文字列置換をしましょう
 
-※: この例を使って、何度もWEBスクレイピングはしないようにしましょう。
+※: 何度もWEBスクレイピングはしないようにしましょう
 randomモジュールやtimeモジュールを組み合わせてランダム時間待機します
 
 ※: この例ではサイトのページネーションに対応していません
@@ -362,26 +347,42 @@ randomモジュールやtimeモジュールを組み合わせてランダム時�
 
 ---
 
-店名にある空白などを取り除きます。
+replace_text店名にある空白などを取り除きます。
 
 ```python
-def replace_str(text: str) -> str:
+def replace_text(text: str) -> str:
   
-    replace_str_map = {
+    replace_text_map = {
         # 置き換え対象文字列:置き換え先の文字列
         "\n":"", 
         "\u3000": " ",
     }
     replaced_text = text
-    for key,val in replace_str_map.items():
+    for key,val in replace_text_map.items():
         replaced_text = replaced_text.replace(key,val)
     return replaced_text
 
 # 例:
-print(replace_str("お好焼\u3000さの"))
+print(replace_text("お好焼\u3000さの"))
 # お好焼 さの
 ```
 
+---
+
+## ⚠️WEBスクレイピングの注意点⚠️
+
+**※スクレイピング対象のサイトへ多数のアクセスはしないように注意**
+
+* 作ってる最中にエラーでアクセスが止まらない
+  * よくやりがちなトラブル
+* 試すときは少し時間を置きながらアクセスしましょう
+  * ランダム時間置いてみるとか
+  * 回数リミットをつけて待つようにする
+* **サイトポリシーがあればそれに従う**
+　* 規約に掲載されている
+  * robot.txtを見る
+
+<!-- https://umya-yakisoba.com/robots.txt -->
 ---
 
 ランダム時間待機できる関数の例
@@ -448,11 +449,11 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 出力できたCSVファイル
 
-![h:300px](./images/csv1.png)![h:300px](./images/csv2.png)
+![h:300px](./images/csv1.png) ![h:300px](./images/csv2.png)
 
 ---
 
-## データを使う/活用する
+## 3. データを使う/活用する
 
 旅行中に使うためのツールとして
 
@@ -514,7 +515,7 @@ Googleマイマップで使おう
 今回はGoogleマップを利用しましたが、推奨しているわけではなくて
 データを作るといろんなサービスと連携できることをお伝えしました。
 
-※: オリジナルのマップを作るサービスは他にも多数あります。一例を載せておきます。
+※: オリジナルのマップを作るサービスは他にも多数あります。一例を載せます
 ※: それぞれ特徴や無料有料とあるので、使いやすいものを探すと良いと思います
 
 * OpenStreetMap uMap: <https://umap.openstreetmap.fr/ja/>
@@ -530,11 +531,14 @@ Googleマイマップで使おう
 
 ![bg left:40%](./images/programing-flow.png)
 
-## 今回のトークで目指すこと
+## 今回のトークでできること
 
-1. お店情報をWEBスクレイピング
-2. 表形式に整形 -> CSVファイル
-3. Googleマイマップで呼び出す
+1. お店情報をデータにする:
+   WEBスクレイピング
+2. データを整形をする:
+   CSVファイルにする
+3. データを使ってみる:
+   Googleマイマップで呼び出す
 
 ↓
 
@@ -547,7 +551,6 @@ Googleマイマップで使おう
 今日学んだことを応用すると
 
 * WEBスクレイピングでデータ収集 -> 世の中のWEBサイトの収集
-  **※扱いには気をつけましょう**
   * WEB APIを扱えると収集や操作はもっと楽
 * データの書き出し: CSV以外にもjson, xlsx, etc....
 * 他のサービスへの連携:データベースに入れたりもできますよね
