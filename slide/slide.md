@@ -30,15 +30,15 @@ Hiroshi Sano / 佐野浩士
 
 ## Today's Document
 
-付録含めて公開されています
+本日の資料は公開されています
 
-* GitHubリポジトリ: Starくれー！
+* GitHubリポジトリ: コードとスライド
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
 
-* スライド
+* スライド: Speaker Deck
   <https://github.com/hrsano645/pyconapac2023-local-food-map/slide/slide.pdf>
 
-あとでトライしたい方は参考にしてみてください。
+後日トライしたい方は参考にしてみてください（良かったらGitHubのStar押してね）
 
 ---
 
@@ -46,13 +46,14 @@ Hiroshi Sano / 佐野浩士
 
 Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
+* 🗺️: Shizuoka, Eastern part🗻
 * 🏢: 株式会社佐野設計事務所 CEO
 * 🐍: PyCon mini Shizuoka Stuff
-  * Shizuoka.py / Unagi.py / Python駿河
+  * 静岡のPythonコミュニティ: Shizuoka.py / Unagi.py / Python駿河
 * CivicTech, Startup Weekend organizer
 * Hobby: Camp🏕️,DIY⚒️,IoT💡
 
-![w:200px](./images/sns-logo.jpg)![w:300px](./images/shizuokaLogo.png) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc9DDT9ootdGiDNZiGUybbHE5WRnm68hFp6XknmZc2lVttIBKJ180GVq0NE2qtcGRbx8OBVAak3E4qHa7H5iXw8gtQqkY4l6tWrFkIHUA96q1jcqE2_f) ![w:200px](https://lh3.googleusercontent.com/pw/AIL4fc_3zxLYLoa5SSL_apqpJ3WCY9BRMfXRL4jUYaYouX3MvqiMU5eSCi8be6eQIvboRzgNZ3ZvdZAIET40tJD7I4y8dSHF6UByo-u8jXhLFFGv5rAw_kZU)
+![w:180px](./images/sns-logo.jpg)![w:360px](./images/shizuokaLogo.png) ![w:180px](https://lh3.googleusercontent.com/pw/AIL4fc9DDT9ootdGiDNZiGUybbHE5WRnm68hFp6XknmZc2lVttIBKJ180GVq0NE2qtcGRbx8OBVAak3E4qHa7H5iXw8gtQqkY4l6tWrFkIHUA96q1jcqE2_f) ![w:180px](https://lh3.googleusercontent.com/pw/AIL4fc_3zxLYLoa5SSL_apqpJ3WCY9BRMfXRL4jUYaYouX3MvqiMU5eSCi8be6eQIvboRzgNZ3ZvdZAIET40tJD7I4y8dSHF6UByo-u8jXhLFFGv5rAw_kZU)
 
 ---
 
@@ -62,7 +63,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 株式会社佐野設計事務所は主に自動車プレス金型の機械設計を行う事務所です。
 * 3D CADを扱った設計や、金型関連、製品形状の3Dモデリングを扱っております。
-* 設計データをデジタルで扱うこともあり、様々な業務の効率化をPython＋クラウドサービスを組み合わせて、実現しています。
+* 設計データはデジタルデータでもありまして、関連した業務の改善をPython＋クラウドサービスを組み合わせて実現しています。
 * 製造業とデジタル化で取り組まれていたり、ご興味ある方がいましたら、後ほどのパーティでぜひお話ししましょう！
 
 -->
@@ -73,7 +74,8 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * ご当地グルメを**情報収集してマップを作りましょう！** 食べに行きましょう！
   * ご当地グルメ=B級グルメのこと
-* PyCampを終えた人に: **Pythonでデータを集めて作り利用するプロセス**   を学べます
+* PyCampを終えた人に: **Pythonでデータを集めて作り利用するプロセス**
+  を学べます
   * 初学者向けの内容です
   * 話すこと: トークお題をPythonで実装する過程
   * 話さないこと: Pythonの基礎や文法の解説
@@ -94,9 +96,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## PyCampの様子
 
-![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
+静岡県3回目の様子
 
-<!-- _footer: 静岡県3回目の様子 -->
+![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
 ---
 
@@ -560,28 +562,29 @@ Googleマイマップで使おう
 プログラミングでもっとも行われる行為
 
 * **どこから** データを取り出すか
-* **どこへ** データを書き出すか
+* **どこへ** データを渡すか
 
-<!-- _footer: もちろん他にもありますが、概念として最終的にデータ/ファイルを扱うことが多いと思います -->
 ---
 
 * **どこから** データを取り出すか
   * データベースから取り出す
   * データ分析で現実の統計データを使う
   * センサーデータで現実環境を使う
-* **どこへ** データを書き出すか
+* **どこへ** データを渡すか
   * データ分析でサービス改善
   * 得られたデータを使って業務工程改善
+
+<!-- _footer: データの流れを意識すると、作りたいプログラムの流れも理解しやすい -->
 
 ---
 
 * **どこから** データを取り出すか
-  * データベースから取り出す -> データベースと接続するライブラリ
-  * データ分析で現実の統計データを使う -> オープンデータ API/ファイル
-  * センサーデータで現実環境を使う -> ハードウェア操作のライブラリ
-* **どこへ** データを書き出すか
-  * データ分析でサービス改善 -> 可視化して統計処理
-  * 得られたデータを使って業務工程改善 -> オートメーション, 他システム連携
+  * データベースから取り出す➡️データベースと接続するライブラリ
+  * データ分析で現実の統計データを使う➡️オープンなデータ、API/ファイル
+  * センサーデータで現実環境を使う➡️ハードウェア操作のライブラリ
+* **どこへ** データを渡すか
+  * データ分析でサービス改善➡️可視化して統計処理
+  * 得られたデータを使って業務工程改善➡️オートメーション、他システム連携
 
 <!-- _footer: データの流れを意識すると、作りたいプログラムの流れも理解しやすい -->
 
@@ -593,7 +596,7 @@ PyCampやPythonの基礎を学んだ方の一歩先として！
 
 自分が使いたい、利用したい、ものやことでトライしましょう！
 
-それたできたら、とても楽しいし感動します。オススメです！
+それができれば、とても楽しいし感動します。オススメです！
 
 ---
 
