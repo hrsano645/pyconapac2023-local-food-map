@@ -24,8 +24,8 @@ def replace_text(text: str) -> str:
         "\u3000": " ",
     }
     replaced_text = text
-    for key,val in replace_text_map.items():
-        replaced_text = replaced_text.replace(key,val)
+    for src, dst in replace_text_map.items():
+        replaced_text = replaced_text.replace(src, dst)
     return replaced_text
 
 def get_shopinfo_list(url: str) -> list[dict]:
@@ -116,9 +116,8 @@ pprint(shopinfo_list)
 
 # mapinfo_listをCSVファイルに書き出してみる。辞書内の値はすべて書き出す
 with open('mapdata.csv', 'w', newline='') as csvfile:
-    # フィールド名がまばらだったので、生成する
-    # すべてmapinfoからフィールド名を取得してsetで重複を取り除いてリスト化
-    
+    # お店の詳細情報の各項目:辞書のキー が部分的にあったりなかったりしたので
+    # 全ての辞書のキーから全ての項目をカバーしたリストを生成する
     fieldnames = list(set().union(*shopinfo_list))
 
     # 上のコードを丁寧に書くとこうなる
