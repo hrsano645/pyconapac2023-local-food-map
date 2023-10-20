@@ -252,7 +252,6 @@ shopinfo_tags = soup.find('div', class_='p-shopList').find_all("a")
 aタグの下にあるそれぞれのタグから必要な情報を取得する
 
 ```python
-
 for shopinfo_tag in shopinfo_tags:
     shopdata = {}
     # divは上から店名、住所、電話番号、定休日。
@@ -261,14 +260,13 @@ for shopinfo_tag in shopinfo_tags:
     shopdata['店名'] = replace_text(shopinfo_tag.find_all("div")[1].text)
     
     shopinfo_list.append(shopdata)
-
 ```
 
 ※ replace_text関数は店名に出てくる空白文字を置き換えたりする独自に作った関数（後述します）
 
 ---
 
-お店の詳細URL, 店名を手に入れた！
+お店の詳細URL, 店名が集まりました🎉
 
 ```python
 >>> shopinfo_list
@@ -312,7 +310,7 @@ for shopinfo in shopinfo_list:
 
 ---
 
-最終的にできるデータの例
+最終的にできるデータ🎉
 
 ```python
 >>> from pprint import pprint
@@ -477,7 +475,7 @@ dict_keys(['TEL', 'specurl', 'お店名ふりがな', 'エリア', '住所', '�
 
 ---
 
-出力できたCSVファイル
+出力できたCSVファイル🎉
 
 ![h:300px](./images/csv1.png) ![h:300px](./images/csv2.png)
 
