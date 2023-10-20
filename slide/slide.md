@@ -5,7 +5,7 @@ paginate: true
 
 # ご当地グルメマップを作ろう  
 
-# Lets create! Local Food Map
+# Let's make! Local Food Map
 
 ### PyCon APAC 2023 Day2
 
@@ -150,7 +150,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## 今回のトークでできること
 
-![bg left:40%](./images/programing-flow.png)
+![bg left:35% h:550px](./images/programing-flow.png)
 
 1. お店情報をデータにする:
    WEBスクレイピング
@@ -169,7 +169,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## 1. データを読む/取得する
 
-![bg left:40%](./images/programing-flow.png)
+![bg left:35% h:550px](./images/programing-flow.png)
 
 * 🔍**WEBスクレイピングで収集する**
 * [付録]🖼️画像識別で加工を試みる
@@ -226,7 +226,7 @@ pip install beautifulesoup4
 
 ---
 
-<!-- ![bg left:40%](./images/gakkai_1-1.png) -->
+![bg left:30% w:400px](./images/gakkai_1-1.png)
 
 構造の中にあるタグから必要な情報を取得する
 
@@ -248,9 +248,9 @@ shopinfo_tags = soup.find(
 
 ---
 
-<!-- ![bg left:40%](./images/gakkai_1-2.png) -->
+![bg left:30% w:400px](./images/gakkai_1-2.png)
 
-aタグの下にあるそれぞれのタグから必要な情報を取得する
+aタグの中にあるタグから必要な情報を取得する
 
 ```python
 for shopinfo_tag in shopinfo_tags:
@@ -258,12 +258,16 @@ for shopinfo_tag in shopinfo_tags:
     # divは上から店名、住所、電話番号、定休日。
     # ここではurlと店名だけまとめたリストを作る
     shopdata['specurl'] = shopinfo_tag.get('href')
-    shopdata['店名'] = replace_text(shopinfo_tag.find_all("div")[1].text)
+    shopdata['店名'] = replace_text(
+      shopinfo_tag.find_all("div")[1].text
+    )
     
     shopinfo_list.append(shopdata)
 ```
 
-※ replace_text関数は店名に出てくる空白文字を置き換えたりする独自に作った関数（後述します）
+※ replace_text関数:
+店名に出てくる空白文字を置き換える独自関数
+（後述します）
 
 ---
 
@@ -289,13 +293,16 @@ for shopinfo_tag in shopinfo_tags:
 
 ---
 
+![bg left:25% w:330px](./images/gakkai_2-1.png)
+
 ```python
 for shopinfo in shopinfo_list:
     # URLから店舗情報を取得
     res = requests.get(shopinfo['specurl'])
     soup = BeautifulSoup(res.text, 'html.parser')
 
-    # dl.p-shopDetails > dt/dd構造でdtが項目、ddが値になっている。これを辞書形式にする
+    # dl.p-shopDetails > dt/dd構造でdtが項目、
+    # ddが値になっている。これを辞書形式にする
     shopspecs = {}
     for dt, dd in zip(
       soup.find('dl', class_='p-shopDetails').find_all('dt'),
@@ -312,8 +319,6 @@ for shopinfo in shopinfo_list:
 ---
 
 最終的にできるデータ🎉
-
-<!-- ![bg left:40%](./images/gakkai_2-1.png) -->
 
 ```python
 >>> from pprint import pprint
@@ -415,7 +420,7 @@ random_sleep(2, 5)
 
 ## 2.データを加工/出力する
 
-![bg left:40%](./images/programing-flow.png)
+![bg left:35% h:550px](./images/programing-flow.png)
 
 マップのもとになるデータを作成します
 
@@ -486,7 +491,7 @@ dict_keys(['TEL', 'specurl', 'お店名ふりがな', 'エリア', '住所', '�
 
 ## 3. データを使う/活用する
 
-![bg left:40%](./images/programing-flow.png)
+![bg left:35% h:550px](./images/programing-flow.png)
 
 旅行中に使うためのツールとして
 
@@ -563,7 +568,7 @@ Googleマイマップとは
 
 ---
 
-![bg left:40%](./images/programing-flow.png)
+![bg left:35% h:550px](./images/programing-flow.png)
 
 ## 今回のトークでできること
 
