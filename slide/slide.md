@@ -64,11 +64,10 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 <!-- 
 
-* 株式会社佐野設計事務所は自動車プレス金型という金型機械を設計する事務所です。
-* 3D CADを扱う設計や、金型の中で使う部品や、製品の3Dモデリングを扱っております。
-* 設計データはデジタルデータでもありまして、関連した業務の改善をPython＋クラウドサービスを組み合わせて実現しています。
+* 株式会社佐野設計事務所は自動車プレス金型という金型機械を設計する事務所です。3D CADで設計、モデリングを扱っております。
+* こういった設計データはデジタルデータでもあって、関連業務の改善に、Python＋クラウドサービスなどを組み合わせて実現しています。
 * 製造業とデジタル化で取り組まれていたり、ご興味ある方がいましたら、後ほどのパーティでぜひ意見交換しましょう！
-
+* もちろん静岡のPythonコミュニティとしても参加していますので、お気軽にお声がけください！
 -->
 
 ---
@@ -87,9 +86,10 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## PyCamp:Python Boot Campとは
 
-* 日本全国で開催されているPythonの初学者向けイベント
+* 日本全国で開催されているPythonのチュートリアルイベント
+  * 一般社団法人PyCon JP Associationが主催
 * Pythonの基礎を学び、簡単なプログラムを作る
-  * 専用テキストを元に講師とTAがサポート
+  * 専用テキストを元に講師、TAがサポート
 
 ![h:300px](./images/pycamp-text.png)
 
@@ -119,7 +119,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 主に静岡の富士宮市周辺で食べられる焼きそば
 * 麺は富士宮周辺でしか手に入らない。まさにローカルフード
-* B級グルメグランプリ殿堂入り、NYで開催されたコナモングランプリで優勝した
+* B-1グランプリ殿堂入り、NYで開催されたコナモングランプリで優勝した
 
 ![h:300px](./images/fujinomiyashi-map.png) ![h:300px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD)
 
@@ -172,9 +172,6 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 * 🔍**WEBスクレイピングで収集する**
 * [付録]🖼️画像識別で加工を試みる
 
-機械可読性はどちらも微妙
-WEBスクレイピングはまだやりやすい
-
 ---
 
 ## ご当地グルメの情報はどこにあるか
@@ -185,8 +182,7 @@ WEBスクレイピングはまだやりやすい
 
 観光情報を探ってみると...
 
-* 市役所で紹介されていたり
-* 観光協会で紹介されていたり
+* 市役所、観光協会のWEBサイトで紹介されていたり
 * ご当地グルメの公式サイト（よく〇〇学会とも言われる）
 
 <!-- _footer: グルメ情報サイトを見たらそこで試合終了ですよ -->
@@ -218,7 +214,7 @@ pip install beautifulesoup4
 
 この構造からBeautifulSoup4を使って必要な情報を取り出します。
 
-![h:500px](./images/gakkai_1.png)
+![h:340px](./images/gakkai_1.png)　![h:340px](./images/gakkai_2.png)
 
 ---
 
@@ -289,7 +285,7 @@ for shopinfo_tag in shopinfo_tags:
 
 ---
 
-![bg left:25% w:330px](./images/gakkai_2-1.png)
+![bg left:28% w:350px](./images/gakkai_2-1.png)
 
 ```python
 for shopinfo in shopinfo_list:
@@ -344,17 +340,53 @@ for shopinfo in shopinfo_list:
 
 ## 上記コードの注意点
 
-※: サイト上に見えない文字があることがあります → 文字列置換をしましょう
-
 ※: ⚠️WEBスクレイピングは注意が必要です
-randomモジュールやtimeモジュールを組み合わせてランダム時間待機します
+短時間で多数アクセスはやめましょう
 ポリシーを守りましょう
+
+※: サイト上に見えない文字があることがあります → 文字列置換をしましょう
 
 ※: この例ではサイトのページネーションに対応していません
 ページネーションについては資料のコードで対応しています
 
 ---
 
+## ⚠️WEBスクレイピングの注意点⚠️
+
+**※スクレイピング対象のサイトへ短時間に多数のアクセスは
+しないように注意しましょう**
+
+* よくあるトラブル
+  * ループ構造が深くてアクセス回数が膨れる
+  * エラーの時にリトライし続ける
+* **少し時間を置きながらアクセス**
+  * ランダム時間置いてみる
+  * 回数リミットをつけて待つ
+* **サイトポリシーがあればそれに従う**
+  * 利用規約を見る
+  * （クローラー向けの）robot.txtを見る
+
+<!-- https://umya-yakisoba.com/robots.txt -->
+---
+
+ランダム時間待機できる関数の例
+
+```python
+import random
+from time import sleep
+
+def random_sleep(a: int,b: int) -> None:
+    """
+    aからbまでのランダムな秒数を待つ
+    """
+    time.sleep(random.randint(a,b))
+
+# 2~5秒の間でランダムに待つ
+random_sleep(2, 5)
+```
+
+---
+<!-- 
 ## 文字列の置き換え
 
 見えない空白や改行などを取り除くと綺麗に使えます。
@@ -377,42 +409,7 @@ print(replace_text("お好焼\u3000さの"))
 # お好焼 さの
 ```
 
----
-
-## ⚠️WEBスクレイピングの注意点⚠️
-
-**※スクレイピング対象のサイトへ多数のアクセスはしないように注意**
-
-* よくあるトラブル
-  * ループ構造が深くてアクセス回数が膨れる
-  * エラーの時にリトライしすぎて
-* 試すとき**少し時間を置きながらアクセス**
-  * ランダム時間置いてみる
-  * 回数リミットをつけて待つ
-* **サイトポリシーがあればそれに従う**
-  * 規約に掲載されている
-  * クローラー向けのポリシー: robot.txtを見る
-
-<!-- https://umya-yakisoba.com/robots.txt -->
----
-
-ランダム時間待機できる関数の例
-
-```python
-import random
-from time import sleep
-
-def random_sleep(a: int,b: int) -> None:
-    """
-    aからbまでのランダムな秒数を待つ
-    """
-    time.sleep(random.randint(a,b))
-
-# 2~5秒の間でランダムに待つ
-random_sleep(2, 5)
-```
-
----
+--- -->
 
 ## 2. どんなデータを作るか
 
@@ -429,9 +426,9 @@ random_sleep(2, 5)
 
 どのフォーマットで書き出すか？
 
-よくある地理データ構造、フォーマット形式
+よくある地理データ構造、ファイルフォーマット
 
-* **CSV（区切り表形式、汎用性高）**
+* **CSV（カンマ区切り表形式、汎用性高）**
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
 * KML（XML形式）
 
@@ -447,9 +444,9 @@ CSVライブラリを使って書き出せます
 with open('mapdata.csv', 'w', newline='') as csvfile:
     # お店の詳細情報の各項目:辞書のキー が部分的にあったりなかったりしたので
     # 全ての辞書のキーから全ての項目をカバーしたリストを生成する
-    fieldnames = list(set().union(*shopinfo_list)
+    csv_fieldnames = list(set().union(*shopinfo_list)
 
-    writer = csv.DictWriter(csvfile, fidnames=fieldnames)
+    writer = csv.DictWriter(csvfile, fieldnames=csv_fieldnames)
     writer.writeheader()
     for shopinfo in shopinfo_list:
         writer.writerow(shopinfo)
