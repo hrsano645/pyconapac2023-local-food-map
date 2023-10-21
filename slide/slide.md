@@ -16,30 +16,15 @@ Hiroshi Sano / 佐野浩士
 
 ---
 
-# Agenda
-
-* トークのモチベーション
-* 今回のトークでできること
-
-1. お店情報をデータにする: WEBスクレイピング
-2. データを整形をする: CSVファイルにする
-3. データを使ってみる: Googleマイマップで呼び出す
-
-* まとめ
-
----
-
 # Today's Document
 
 本日の資料は公開されています
 
-* GitHubリポジトリ: コードとスライド
-  <https://github.com/hrsano645/pyconapac2023-local-food-map>
-
 * スライド: Speaker Deck
   <URL載せ替えます>
-
-後日トライしたい方は参考にしてみてください
+  
+* GitHubリポジトリ: コードとスライド
+  <https://github.com/hrsano645/pyconapac2023-local-food-map>
 
 <!-- _footer: GitHubのStarくれー🦖👍！！ -->
 
@@ -64,21 +49,33 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 <!-- 
 
-* 株式会社佐野設計事務所は自動車プレス金型という金型機械を設計する事務所です。3D CADで設計、モデリングを扱っております。
-* こういった設計データはデジタルデータでもあって、関連業務の改善に、Python＋クラウドサービスなどを組み合わせて実現しています。
-* 製造業とデジタル化で取り組まれていたり、ご興味ある方がいましたら、後ほどのパーティでぜひ意見交換しましょう！
-* もちろん静岡のPythonコミュニティとしても参加していますので、お気軽にお声がけください！
+* 株式会社佐野設計事務所は自動車プレス金型という、金型設計する事務所です。3D CADで設計、製品系の3Dモデリングを扱っております。
+* こういった設計データはデジタルデータです。データを使い関連業務の改善に、Python＋クラウドサービスなどを組み合わせて実現しています。
+* 製造業なのですがデジタル化で取り組んでいます。取り組まれている方やご興味ある方がいましたら、後ほどのパーティでぜひ意見交換できたらと思います。
+* もちろん静岡のPythonコミュニティとしても参加していますので、コミュニティスタッフとしてもお気軽にお声がけください！
 -->
+
+---
+
+# Agenda
+
+* トークのモチベーション
+* 今回のトークでできること
+
+1. お店情報をデータにする: WEBスクレイピング
+2. データを整形をする: CSVファイルにする
+3. データを使ってみる: Googleマイマップで呼び出す
+
+* まとめ
 
 ---
 
 # トークのモチベーション
 
-* ご当地グルメを**情報収集してマップを作りましょう！** 食べに行きましょう！
+* **ご当地グルメを情報収集してマップを作りましょう！**
   * ご当地グルメ=B級グルメのこと
 * PyCampを終えた人に: **Pythonでデータを集めて作り利用するプロセス**
   を学べます
-  * 初学者向けの内容です
   * 話すこと: トークお題をPythonで実装する過程
   * 話さないこと: Pythonの基礎や文法の解説
 
@@ -91,17 +88,11 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 * Pythonの基礎を学び、簡単なプログラムを作る
   * 専用テキストを元に講師、TAがサポート
 
-![h:300px](./images/pycamp-text.png)
+![h:250px](./images/pycamp-text.png) ![h:200px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:200px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
 このトークはその続きからトライできるコンテンツを目指して作りました
 
----
-
-## PyCampの様子
-
-静岡県3回目の様子
-
-![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc-QihRkRpnkffJ9b1pmbmM6J4Jc4hkDXCleYASV-peLtXU9USqbL41kQjl85yDJAjUrSDFe0yDxO-ygY-U0TlYC1vhW7z5dmeOFBok8Z1wA9mXsbrIR) ![h:250px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:250px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
+<!-- _footer: 写真は静岡県3回目の様子 -->
 
 ---
 
@@ -250,16 +241,10 @@ for shopinfo_tag in shopinfo_tags:
     # divは上から店名、住所、電話番号、定休日。
     # ここではurlと店名だけまとめたリストを作る
     shopdata['specurl'] = shopinfo_tag.get('href')
-    shopdata['店名'] = replace_text(
-      shopinfo_tag.find_all("div")[1].text
-    )
+    shopdata['店名'] = shopinfo_tag.find_all("div")[1].text
     
     shopinfo_list.append(shopdata)
 ```
-
-※ replace_text関数:
-店名に出てくる空白文字を置き換える独自関数
-（後述します）
 
 ---
 
@@ -274,6 +259,8 @@ for shopinfo_tag in shopinfo_tags:
 ...
 ]
 ```
+
+<!-- _footer: ※この例では店名に`\\u3000（全角スペースの意味）`が入ることがあり、半角スペースへ置き換え処理をした結果になります -->
 
 ---
 
@@ -301,7 +288,7 @@ for shopinfo in shopinfo_list:
       soup.find('dl', class_='p-shopDetails').find_all('dd')
     ):
         # 値に 改行や空白文字があるので取り除く
-        shopspecs[dt.text] = replace_text(dd.text)
+        shopspecs[dt.text] = dd.text
 
     # 店舗情報をマップ情報に追加
     shopinfo.update(shopspecs)
@@ -331,10 +318,11 @@ for shopinfo in shopinfo_list:
   '調査員おすすめメニュー': 'キムチとチーズ入り',
   '調査員が見た特徴': 'キャベツとネギが多めに入っている',
   '駐車場': '4'},
-  # 以下お店情報の辞書が続いて入る
-  # ...
+  # 以下お店情報の辞書が続いて入る...
 ]
 ```
+
+<!-- _footer: ※この例では各項目に`\\n（改行コード）`が入ることがあり、空白へ置き換え処理をした結果になります -->
 
 ---
 
@@ -386,36 +374,13 @@ random_sleep(2, 5)
 ```
 
 ---
-<!-- 
-## 文字列の置き換え
-
-見えない空白や改行などを取り除くと綺麗に使えます。
-
-```python
-def replace_text(text: str) -> str:
-  
-    replace_text_map = {
-        # 置き換え対象文字列:置き換え先の文字列
-        "\u3000": " ",
-        "\n":"", 
-    }
-    replaced_text = text
-    for src, dst in replace_text_map.items():
-        replaced_text = replaced_text.replace(src, dst)
-    return replaced_text
-
-# 例:
-print(replace_text("お好焼\u3000さの"))
-# お好焼 さの
-```
-
---- -->
 
 ## 2. どんなデータを作るか
 
 ![bg left:35% h:550px](./images/programing-flow.png)
 
-マップのもとになるデータを作成します
+最後に利用するためのデータ（ファイル）を
+作成します
 
 * **💾情報を整理して表形式ファイルで書き出す**
 * [付録]👣地理情報を集める
@@ -431,8 +396,6 @@ print(replace_text("お好焼\u3000さの"))
 * **CSV（カンマ区切り表形式、汎用性高）**
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
 * KML（XML形式）
-
-<!-- _footer: ※どのような使い方にもよります。他にもあったら教えてください -->
 
 ---
 
@@ -617,11 +580,11 @@ Googleマイマップとは
 
 # 最後に伝えたいこと
 
-PyCampやPythonの基礎を学んだ方の一歩先として！
+PyCampやPythonの基礎を学んだ方の一歩先として。オススメです！
 
-自分が使いたい、利用したい、ものやことでトライしましょう
+自分が使いたい、利用したい、ものやことがあればチャレンジしましょう！
 
-それができれば、とても楽しいし感動します。オススメです😆
+できたら、とても楽しいし、感動します😆
 
 ---
 
