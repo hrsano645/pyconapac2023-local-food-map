@@ -76,7 +76,8 @@ Hiroshi Sano（佐野浩士）[@hrs_sano645](https://twitter.com/hrs_sano645)
   * ご当地グルメ=B級グルメのこと
   * とあるご当地グルメを例にしています
 * PyCampを終えた人に:
-  **Pythonでデータを集める、作る、利用する**プロセスを学べます
+  **データを集める、作る、利用する**を元にプログラムの
+  実装プロセスを学べます
   * 話すこと: トークお題をPythonで実装する過程
   * 話さないこと: Pythonの基礎や文法の解説
 
@@ -112,7 +113,7 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 
 ![h:300px](./images/fujinomiyashi-map.png) ![h:300px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD)
 
-<!-- _footer: 地元の人は、多分月に数回は食べてる -->
+<!-- _footer: 地元の人は、多分週一ぐらいで食べてる -->
 
 ---
 
@@ -163,6 +164,21 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 
 ---
 
+## 利用するライブラリ
+
+* requests: HTTPアクセス→情報取得（今回はHTML）
+* BeautifulSoup4: HTML（マークアップ言語）解析と抽出
+
+```bash
+pip install requests
+pip install beautifulesoup4
+```
+
+※:スライドのコードは説明向けです。そのままだと動かないこともあります
+資料のリポジトリから動作するスクリプトをDL可能です
+
+---
+
 ## ご当地グルメの情報はどこにあるか
 
 * 地域情報を収集
@@ -175,42 +191,21 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 * 市役所、観光協会のWEBサイトで紹介されていたり
 * ご当地グルメの公式サイト（よく〇〇学会とも言われる）
 
-<!-- _footer: グルメ情報サイトを見たらそこで試合終了ですよ -->
+<!-- _footer: グルメ情報サイトを見たらそこで試合終了ですよ🏀 -->
 
 ---
 
-今回は、富士宮焼きそば学会の公式サイトを例にしています。
-
-<https://umya-yakisoba.com/shop/>
-
-<!-- _footer: 富士宮焼きそば学会の公式サイトを見せます -->
-
----
-
-## 利用するライブラリ
-
-* requests: HTTPアクセス→情報取得（今回はHTML）
-* BeautifulSoup4: HTML（マークアップ言語）解析と抽出
-
-```bash
-pip install requests
-pip install beautifulesoup4
-```
-
-※:スライドのコードは説明向けです。そのままだと動かないこともあります
-資料のリポジトリから動作するスクリプトをDL可能です。
-
----
-
-この構造からBeautifulSoup4を使って必要な情報を取り出します。
+今回は、富士宮焼きそば学会の公式サイトを例にしています
+（左: お店一覧、右: お店の詳細）
 
 ![h:340px](./images/gakkai_1.png)　![h:340px](./images/gakkai_2.png)
 
+<!-- _footer: 富士宮焼きそば学会公式サイトのお店一覧:https://umya-yakisoba.com/shop/  -->
 ---
 
 ![bg left:30% w:400px](./images/gakkai_1-1.png)
 
-構造の中にあるタグから必要な情報を取得する
+お店一覧のaタグを収集する
 
 ```python
 import requests
@@ -232,12 +227,12 @@ shopinfo_tags = soup.find(
 
 ![bg left:30% w:400px](./images/gakkai_1-2.png)
 
-aタグの中にあるタグから必要な情報を取得する
+aタグや、中にあるタグから必要な情報を取得する
 
 ```python
 for shopinfo_tag in shopinfo_tags:
     shopdata = {}
-    # divは上から店名、住所、電話番号、定休日。
+    # divタグの並びは上から店名、住所、電話番号、定休日
     # ここではurlと店名だけまとめたリストを作る
     shopdata['specurl'] = shopinfo_tag.get('href')
     shopdata['店名'] = shopinfo_tag.find_all("div")[1].text
@@ -263,13 +258,7 @@ for shopinfo_tag in shopinfo_tags:
 
 ---
 
-収集した詳細URLのリストを使って、お店情報収集
-
-![h:500px](./images/gakkai_2.png)
-
-`dt`と`dd`タグは記述リスト、説明リストと呼ばれるHTMLタグ
-
----
+詳細URIへアクセスして、各お店の詳細情報を収集します
 
 ![bg left:28% w:350px](./images/gakkai_2-1.png)
 
@@ -279,13 +268,15 @@ for shopinfo in shopinfo_list:
     res = requests.get(shopinfo['specurl'])
     soup = BeautifulSoup(res.text, 'html.parser')
 
-    # dl.p-shopDetails > dt/dd構造でdtが項目、
-    # ddが値になっている。これを辞書形式にする
+    # dl.p-shopDetails > dt/dd構造
+    # dtが項目名、ddが項目の値になっている。
+    # zip関数で両者組み合わせて同時に取り出す
     shopspecs = {}
     for dt, dd in zip(
       soup.find('dl', class_='p-shopDetails').find_all('dt'),
       soup.find('dl', class_='p-shopDetails').find_all('dd')
     ):
+        # 辞書形式にする
         # 値に 改行や空白文字があるので取り除く
         shopspecs[dt.text] = dd.text
 
@@ -293,6 +284,8 @@ for shopinfo in shopinfo_list:
     shopinfo.update(shopspecs)
     # INFO:ここにランダム待機時間があるとよさそう
 ```
+
+<!-- _footer: `dt`と`dd`タグは記述リスト、説明リストと呼ばれるHTMLタグ -->
 
 ---
 
@@ -327,9 +320,10 @@ for shopinfo in shopinfo_list:
 
 ## 上記コードの注意点
 
-※: ⚠️WEBスクレイピングは注意が必要です
-短時間で多数アクセスはやめましょう
-ポリシーを守りましょう
+**※: ⚠️WEBスクレイピングは注意が必要です**
+
+* 短時間で多数アクセスはしないように注意
+* 規約やポリシーを守りましょう
 
 ※: サイト上に見えない文字があることがあります → 文字列置換をしましょう
 
@@ -338,25 +332,7 @@ for shopinfo in shopinfo_list:
 
 ---
 
-## ⚠️WEBスクレイピングの注意点⚠️
-
-**※スクレイピング対象のサイトへ短時間に多数のアクセスは
-しないように注意しましょう**
-
-* よくあるトラブル
-  * ループ構造が深くてアクセス回数が膨れる
-  * エラーの時にリトライし続ける
-* **少し時間を置きながらアクセス**
-  * ランダム時間置いてみる
-  * 回数リミットをつけて待つ
-* **サイトポリシーがあればそれに従う**
-  * 利用規約を見る
-  * （クローラー向けの）robot.txtを見る
-
-<!-- https://umya-yakisoba.com/robots.txt -->
----
-
-ランダム時間待機できる関数の例
+WEBスクレイピングでランダム時間を待機できる関数の例
 
 ```python
 import random
@@ -368,7 +344,8 @@ def random_sleep(a: int,b: int) -> None:
     """
     time.sleep(random.randint(a,b))
 
-# 2~5秒の間でランダムに待つ
+# 例: 2~5秒の間でランダムに待つ
+# 複数回アクセスする時、ループの最後に差し込むと良い
 random_sleep(2, 5)
 ```
 
@@ -378,7 +355,7 @@ random_sleep(2, 5)
 
 ![bg left:35% h:550px](./images/programing-flow.png)
 
-最後に利用するためのデータ（ファイル）を
+3.で利用するためのデータ（ファイル）を
 作成します
 
 * **💾情報を整理して表形式ファイルで書き出す**
@@ -390,7 +367,7 @@ random_sleep(2, 5)
 
 どのフォーマットで書き出すか？
 
-よくある地理データ構造、ファイルフォーマット
+よくある地理データ向けファイルフォーマット
 
 * **CSV（カンマ区切り表形式、汎用性高）**
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
@@ -400,12 +377,13 @@ random_sleep(2, 5)
 
 Python標準のCSVライブラリを使って書き出します
 
-`csv.DictWriter`を使うと辞書のキーを使って列見出しを用意できる
+`csv.DictWriter`を使うと辞書形式のデータをCSVに書き出せます
 
 ```python
 with open('mapdata.csv', 'w', newline='') as csvfile:
-    # 注意:お店の詳細情報の各項目:辞書のキー が部分的に異なる。
-    # 列名を統一するために全ての辞書のキーから全ての項目を集めたリストを生成
+
+    # ※:お店の詳細情報の各項目:辞書のキー が部分的に異なるため、
+    # 全ての項目名:辞書のキーを集めて重複を取り除いたリストを作成しています
     csv_fieldnames = list(set().union(*shopinfo_list)
 
     writer = csv.DictWriter(csvfile, fieldnames=csv_fieldnames)
@@ -413,7 +391,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
     for shopinfo in shopinfo_list:
         writer.writerow(shopinfo)
 ```
-<!-- _footer: ※`変数:csv_fieldname`ではCSVの列名を統一するために、全ての辞書のキーを集めたリストを作成しています  -->
+<!-- _footer: ※`変数:csv_fieldname`では項目名のばらつきがあるため、  -->
 ---
 
 出力できたCSVファイル🎉
@@ -442,7 +420,7 @@ Googleマイマップとは
 
 ## 扱い方
 
-`https://www.google.com/maps/d/` へアクセスして利用します。
+`https://www.google.com/maps/d/` へアクセスして利用します
 
 「新しい地図を作成」ボタンを押す
 
@@ -462,9 +440,9 @@ Googleマイマップとは
 
 ---
 
-ポイントした部分への簡易説明（マーカー）を入れる。
+ポイントした部分への簡易説明（マーカー）を入れる
 
-今回は店名にしました。
+今回は店名にしました
 
 ![h:450px](./images/google_mymap4.png)
 
@@ -487,13 +465,14 @@ Googleマイマップとは
 今回はGoogleマイマップを利用しましたが、推奨しているわけではなくて
 データを作るといろんなサービスと連携できることをお伝えしました。
 
-※: オリジナルのマップを作るサービスは他にも多数あります。一例を載せます
-※: それぞれ特徴や無料有料とあるので、使いやすいものを探すと良いと思います
+オリジナルのマップを作るサービスの一例です
 
 * OpenStreetMap uMap: <https://umap.openstreetmap.fr/ja/>
 * proxi: <https://www.proxi.co/>
 * [日本向け]国土地理院: <https://maps.gsi.go.jp/>
 * etc...
+
+※: それぞれ特徴や無料有料とあるので、使いやすいものを探すと良いと思います
 
 ---
 
@@ -526,20 +505,6 @@ Googleマイマップとは
 * **どこへ** データを渡すか
 
 プログラミングはデータの流れを意識しよう
-
----
-
-* **どこから** データを取り出すか
-  * データベースから取り出す
-  * 現実の統計データを使う
-  * センサーデータで現実環境を扱う
-* **どんな** データを作るか
-  * データを加工して新しいデータを作る
-  * データを整形する
-* **どこへ** データを渡すか
-  * データの可視化をして分析
-  * データを使って業務工程改善
-  * データを使ってAIで予測
 
 ---
 
