@@ -98,7 +98,7 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 
 ---
 
-## 今回のお題: 本題のご当地グルメ
+## 今回のお題: ご当地グルメはこちら
 
 ![h:500px](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Fujinomiya-yakisoba.jpg/800px-Fujinomiya-yakisoba.jpg)
 
@@ -332,7 +332,7 @@ for shopinfo in shopinfo_list:
 
 ---
 
-WEBスクレイピングでランダム時間を待機できる関数の例
+WEBスクレイピングでランダム時間を待機する関数の例
 
 ```python
 import random
@@ -462,17 +462,16 @@ Googleマイマップとは
 
 ## そのほか選択肢
 
-今回はGoogleマイマップを利用しましたが、推奨しているわけではなくて
-データを作るといろんなサービスと連携できることをお伝えしました。
+データを作るといろんなサービスと連携できます
 
+※: 今回はGoogleマイマップを利用する例を紹介しました
 オリジナルのマップを作るサービスの一例です
+それぞれ特徴や無料有料とあるので、使いやすいものを探してみましょう
 
 * OpenStreetMap uMap: <https://umap.openstreetmap.fr/ja/>
 * proxi: <https://www.proxi.co/>
 * [日本向け]国土地理院: <https://maps.gsi.go.jp/>
 * etc...
-
-※: それぞれ特徴や無料有料とあるので、使いやすいものを探すと良いと思います
 
 ---
 
@@ -539,77 +538,3 @@ PyCampやPythonの基礎を学んだ方の一歩先として。オススメで�
 **and, Have a nice trip!!**
 
 ---
-
-# 付録
-
----
-
-今回扱わなかった他の方法については、またどこかで解説できたらと思います
-
-* WEBスクレイピングしづらいサイトもカバーする
-  * selenium + headless chrome
-* 画像識別でお店情報を収集する
-  * OCR, Googleなど
-* 緯度経度を収集
-  * 世界: Google?
-  * 日本: 東大CSIS
-* 印刷物を作る -> テンプレートエンジンで印刷しやすいHTMLを生成
-* fletで自分専用のマップアプリを作る
-
----
-
-## WEBスクレイピング: Seleniumの例
-
-* 動的な（javascriptなど利用した）サイトはrequestsで対応が難しいことがあります
-* 本物のブラウザ + ブラウザ自動操作ツール(selenium)を使った例も載せておきます
-
--> url
-
----
-
-## 画像識別
-
-結構難しい分野（ちょっと自信ない）
-
-* Google Cloud Vision
-  * -> url
-
----
-
-## 位置情報
-
-* 世界: Google Maps Platform ->
-  <https://developers.google.com/maps/documentation/geocoding/overview?hl=ja>
-  * -> url
-
-* 日本: 東大CSIS -> jageocoder
-  <https://github.com/t-sagara/jageocoder>
-  * 無料で利用できる（リクエスト数は少なめがよし
-  * -> url
-
----
-
-## 印刷用マップを作ってみる
-
-印刷用のHTMLファイルを作って印刷してみる
-
-* Mapboxで概要と詳細の地図を用意
-* お店の情報をテーブルで埋め込む
-* 印刷用にCSSで調整する
-
--> url
-
----
-
-## モバイル向けのWEBアプリ
-
-<!-- 実際に作成してみる -->
-
-実験的な扱いです。うまく動かなければ...
-
-* fletを使って作ってみました
-* staticなページでWASMとして埋め込んで作ってみる
-  * <https://flet.dev/docs/guides/python/publishing-static-website/>
-* ※サイト自体の公開はしません
-
--> url
