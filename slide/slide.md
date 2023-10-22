@@ -32,7 +32,7 @@ Hiroshi Sano / 佐野浩士
 
 # Self Infroduction
 
-Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
+Hiroshi Sano（佐野浩士）[@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 🗺️: Shizuoka, Eastern part🗻
 * 🏢: 株式会社佐野設計事務所 CEO
@@ -49,9 +49,9 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 <!-- 
 
-* 株式会社佐野設計事務所は自動車プレス金型という、金型設計する事務所です。3D CADで設計、製品系の3Dモデリングを扱っております。
-* こういった設計データはデジタルデータです。データを使い関連業務の改善に、Python＋クラウドサービスなどを組み合わせて実現しています。
-* 製造業なのですがデジタル化で取り組んでいます。取り組まれている方やご興味ある方がいましたら、後ほどのパーティでぜひ意見交換できたらと思います。
+* 株式会社佐野設計事務所は自動車プレス金型という、金型という機械を設計する事務所です。3D CADを使い設計、また他業界含む製品の3Dモデリングを扱っております。
+* こういった設計データはデジタルデータになります。データを使い関連業務の改善に、Python＋クラウドサービスなどを組み合わせて実現しています。
+* 製造業なのですがデジタル化で取り組んでいます。同じように取り組まれている方やご興味ある方がいましたら、後ほどのパーティでぜひ意見交換できたらと思います。
 * もちろん静岡のPythonコミュニティとしても参加していますので、コミュニティスタッフとしてもお気軽にお声がけください！
 -->
 
@@ -74,6 +74,7 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * **ご当地グルメを情報収集してマップを作りましょう！**
   * ご当地グルメ=B級グルメのこと
+  * とあるご当地グルメを例にしています
 * PyCampを終えた人に:
   **Pythonでデータを集める、作る、利用する**プロセスを学べます
   * 話すこと: トークお題をPythonで実装する過程
@@ -85,12 +86,12 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 * 日本全国で開催されているPythonのチュートリアルイベント
   * 一般社団法人PyCon JP Associationが主催
-* Pythonの基礎を学び、簡単なプログラムを作る
+* 半日でPythonの基礎を学び、簡単なプログラムを作る
   * 専用テキストを元に講師、TAがサポート
 
 ![h:250px](./images/pycamp-text.png) ![h:200px](https://lh3.googleusercontent.com/pw/AIL4fc9_J_x8gcqjZ828PuiB3sVh7FjhZW8ZTWXSzBOZSZxTFh9dnbBIvTU2KsnQGH7iZacfkPJix4lsezINDWNERljbRgfUPFjAKFkDFgtuXI1OzJegQRhy) ![h:200px](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjS_cCQlBadAUmQnxucUD5NjwxcSqAJzILkL7ng1PEgrKqPh8mvT8KkHd1XueX40o_DydsBO6iNB8K3HWdOnXb0csUkMQ3th9uBbFJ9DkB4qEQgY6X43vM9s0ieoYgsitSTU-6VdXvxaGvfMyVH1ZRk5WALgXjR7bHXY4SFmOZo0x5_hhSEHpfe7h68/s5472/IMG_5991.jpg)
 
-このトークはその続きからトライできるコンテンツを目指して作りました
+PyCampを終えた方の次にチャレンジできるコンテンツを目指して作りました
 
 <!-- _footer: 写真は静岡県3回目の様子 -->
 
@@ -98,19 +99,16 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ## 今回のお題: 本題のご当地グルメ
 
----
-
-## 富士宮焼きそば
-
 ![h:500px](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Fujinomiya-yakisoba.jpg/800px-Fujinomiya-yakisoba.jpg)
 
 <!-- _footer: しんかわな, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, ウィキメディア・コモンズ経由 -->
 
 ---
 
-* 主に静岡の富士宮市周辺で食べられる焼きそば
-* 麺は富士宮周辺でしか手に入らない。まさにローカルフード
-* B-1グランプリ殿堂入り、NYで開催されたコナモングランプリで優勝した
+## 富士宮焼きそば
+
+* 主に静岡県富士宮市周辺で食べられる焼きそば
+* B-1グランプリ殿堂入り、NYで開催されたコナモングランプリで優勝
 
 ![h:300px](./images/fujinomiyashi-map.png) ![h:300px](https://lh3.googleusercontent.com/pw/AIL4fc_qzyqjAu3-1DV-HK-b02ln329d9Rsp45D1VYSlzc6Qpkk73NwvzCEXCLjjgXIGrCDq2pRNobz3dEnzgNjZHlcgEbmuMMV7cyksEf2O7dvMF2GHZ9zD)
 
@@ -118,17 +116,15 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 
 ---
 
-ところで、みなさん
-
----
+ところで、みなさん、
 
 もう食べたくなりましたね？🤤
 
-<!-- _footer: このあとはパーティ🎉ですし、お腹空きましたね🤤 -->
+<!-- _footer: このあとはパーティ🎉ですし、お腹空きましたね🤤🍻 -->
 
 ---
 
-# 富士宮焼きそばマップを作りましょう
+# 富士宮焼きそばマップを作りましょう💪
 
 ---
 
@@ -148,6 +144,8 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 2. データを整形をする: CSVファイルにする
 3. データを使ってみる: Googleマイマップ
 
+抽象的に言い直すと...
+
 <p align="center">⬇️</p>
 
 1. **どこから** データを取り出すか
@@ -161,17 +159,18 @@ Hiroshi Sano(佐野浩士) [@hrs_sano645](https://twitter.com/hrs_sano645)
 ![bg left:35% h:550px](./images/programing-flow.png)
 
 * 🔍**WEBスクレイピングで収集する**
-* [付録]🖼️画像識別で加工を試みる
+* [付録]🖼️画像識別で収集する
 
 ---
 
 ## ご当地グルメの情報はどこにあるか
 
-* 地域の情報を収集
+* 地域情報を収集
 * **その情報は機械可読ができるか？**
-  * 大体が紙ベースが多い📃🐐（画像識別の手段は使える）
+  * 大体が紙ベースが多い📃🐐 パンフレットとか
+  * （画像識別の手段は使える）
 
-観光情報を探ってみると...
+観光情報を探ってみる
 
 * 市役所、観光協会のWEBサイトで紹介されていたり
 * ご当地グルメの公式サイト（よく〇〇学会とも言われる）
@@ -399,14 +398,14 @@ random_sleep(2, 5)
 
 ---
 
-CSVライブラリを使って書き出せます
+Python標準のCSVライブラリを使って書き出します
 
 `csv.DictWriter`を使うと辞書のキーを使って列見出しを用意できる
 
 ```python
 with open('mapdata.csv', 'w', newline='') as csvfile:
-    # お店の詳細情報の各項目:辞書のキー が部分的にあったりなかったりしたので
-    # 全ての辞書のキーから全ての項目をカバーしたリストを生成する
+    # 注意:お店の詳細情報の各項目:辞書のキー が部分的に異なる。
+    # 列名を統一するために全ての辞書のキーから全ての項目を集めたリストを生成
     csv_fieldnames = list(set().union(*shopinfo_list)
 
     writer = csv.DictWriter(csvfile, fieldnames=csv_fieldnames)
@@ -414,29 +413,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
     for shopinfo in shopinfo_list:
         writer.writerow(shopinfo)
 ```
-
----
-
-お店ごとに詳細情報の項目数が違う
-
-```python
->>> shopinfo_list[0].keys()
-dict_keys(['TEL', 'specurl', 'お店名ふりがな', 'エリア', '住所', '受入人数', '営業時間', 
-'地図', '定休日', '店名', '料金目安', '業種', '焼き方', 
-'調査員おすすめメニュー', '調査員が見た特徴', '駐車場'])
->>> shopinfo_list[1].keys()
-dict_keys(['TEL', 'specurl', 'お店名ふりがな', 'エリア', '住所', '受入人数', '営業時間', 
-'地図', '定休日', '店名', '料金目安', '業種', '焼き方'])
-```
-
-それぞれの項目をすべて合わせたリストを作る
-
-```python
->>> print(list(set().union(*shopinfo_list)))
-['エリア', '駐車場', '焼き方', '受入人数', 'specurl', 'TEL', '店名', '定休日', '業種', 
-'調査員が見た特徴', '住所', '営業時間', 'お店名ふりがな', '地図', '料金目安', '調査員おすすめメニュー']
-```
-
+<!-- _footer: ※`変数:csv_fieldname`ではCSVの列名を統一するために、全ての辞書のキーを集めたリストを作成しています  -->
 ---
 
 出力できたCSVファイル🎉
@@ -532,6 +509,8 @@ Googleマイマップとは
 2. データを整形をする: CSVファイルにする
 3. データを使ってみる: Googleマイマップ
 
+抽象的に言い直すと...
+
 <p align="center">⬇️</p>
 
 1. **どこから** データを取り出すか
@@ -540,11 +519,13 @@ Googleマイマップとは
 
 ---
 
-プログラミングでもっとも行われる行為
+**プログラミングでもっとも行われる行為**
 
 * **どこから** データを取り出すか
 * **どんな** データを作るか
 * **どこへ** データを渡すか
+
+プログラミングはデータの流れを意識しよう
 
 ---
 
