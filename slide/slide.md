@@ -21,7 +21,7 @@ Hiroshi Sano / 佐野浩士
 本日の資料は公開されています
 
 * スライド: Speaker Deck
-  <URL載せ替えます>
+  <https://speakerdeck.com/hrsano645/pyconapac2023-lets-make-localfood-map>
   
 * GitHubリポジトリ: コードとスライド
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
@@ -139,7 +139,7 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 
 ## 今回のトークでできること
 
-![bg left:40% h:600px](./images/programing-flow.png)
+![bg left:35% h:600px](./images/programing-flow.png)
 
 1. お店情報をデータにする: WEBスクレイピング
 2. データを整形をする: CSVファイルにする
@@ -157,7 +157,7 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 
 ## 1. どこからデータを取り出すか
 
-![bg left:40% h:550px](./images/programing-flow.png)
+![bg left:35% h:600px](./images/programing-flow.png)
 
 * 🔍**WEBスクレイピングで収集する**
 * [付録]🖼️画像識別で収集する
@@ -353,7 +353,7 @@ random_sleep(2, 5)
 
 ## 2. どんなデータを作るか
 
-![bg left:40% h:550px](./images/programing-flow.png)
+![bg left:35% h:600px](./images/programing-flow.png)
 
 3.で利用するためのデータ（ファイル）を
 作成します
@@ -402,7 +402,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 ## 3. どこへデータを渡すか
 
-![bg left:40% h:550px](./images/programing-flow.png)
+![bg left:35% h:600px](./images/programing-flow.png)
 
 旅行中に使うためのツールとして
 
@@ -480,7 +480,7 @@ Googleマイマップとは
 
 ---
 
-![bg left:40% h:550px](./images/programing-flow.png)
+![bg left:35% h:600px](./images/programing-flow.png)
 
 ## 今回のトークでできること
 
