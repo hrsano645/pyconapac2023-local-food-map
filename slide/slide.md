@@ -536,5 +536,3 @@ PyCampやPythonの基礎を学んだ方の一歩先として。オススメで�
 **Happy Hacking!!**
 
 **and, Have a nice trip!!**
-
----
