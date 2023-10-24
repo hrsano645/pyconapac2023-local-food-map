@@ -25,8 +25,9 @@ Hiroshi Sano / 佐野浩士
   
 * GitHubリポジトリ: コードとスライド
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
+  GitHubのStarくれー🦖👍！！
 
-<!-- _footer: GitHubのStarくれー🦖👍！！ -->
+<!-- _footer: このセッションでカンファレンスも終わるのでゆったりと眺めてもらえたらと思います -->
 
 ---
 
@@ -72,7 +73,7 @@ Hiroshi Sano（佐野浩士）[@hrs_sano645](https://twitter.com/hrs_sano645)
 
 # トークのモチベーション
 
-* **ご当地グルメを情報収集してマップを作りましょう！**
+* **ご当地グルメの情報収集してマップを作りましょう！**
   * ご当地グルメ=B級グルメのこと
   * とあるご当地グルメを例にしています
 * PyCampを終えた人に:
@@ -164,7 +165,7 @@ PyCampを終えた方の次にチャレンジできるコンテンツを目指�
 
 ---
 
-## 利用するライブラリ
+## WEBスクレイピングで利用するライブラリ
 
 * requests: HTTPアクセス→情報取得（今回はHTML）
 * BeautifulSoup4: HTML（マークアップ言語）解析と抽出
@@ -174,19 +175,20 @@ pip install requests
 pip install beautifulesoup4
 ```
 
-※:スライドのコードは説明向けです。そのままだと動かないこともあります
-資料のリポジトリから動作するスクリプトをDL可能です
+※PyCampの終盤で利用するライブラリです。今回は詳細解説は省きます
+※スライドのコードは説明向けです。そのままだと動かないこともあります
+※資料のリポジトリから動作するスクリプトをDL可能です
 
 ---
 
 ## ご当地グルメの情報はどこにあるか
 
-* 地域情報を収集
-* **その情報は機械可読ができるか？**
+* 地域情報を収集してみる
+* その情報は**機械可読ができるか？**
   * 大体が紙ベースが多い📃🐐 パンフレットとか
   * （画像識別の手段は使える）
 
-観光情報を探ってみる
+観光情報を探ってみると
 
 * 市役所、観光協会のWEBサイトで紹介されていたり
 * ご当地グルメの公式サイト（よく〇〇学会とも言われる）
@@ -205,14 +207,13 @@ pip install beautifulesoup4
 
 ![bg left:30% w:400px](./images/gakkai_1-1.png)
 
-お店一覧のaタグを収集する
+お店一覧をざっくり収集します
 
 ```python
 import requests
 from bs4 import BeautifulSoup
 
 url = "https://umya-yakisoba.com/shop/"
-shopinfo_list = []
 res = requests.get(url)
 soup = BeautifulSoup(res.text, 'html.parser')
 
@@ -227,9 +228,11 @@ shopinfo_tags = soup.find(
 
 ![bg left:30% w:400px](./images/gakkai_1-2.png)
 
-aタグや、中にあるタグから必要な情報を取得する
+aタグのURLと内部のタグから必要な情報を取得する
 
 ```python
+# お店情報をまとめるリスト
+shopinfo_list = []
 for shopinfo_tag in shopinfo_tags:
     shopdata = {}
     # divタグの並びは上から店名、住所、電話番号、定休日
@@ -258,7 +261,7 @@ for shopinfo_tag in shopinfo_tags:
 
 ---
 
-詳細URIへアクセスして、各お店の詳細情報を収集します
+詳細URLへアクセスして、各お店の詳細情報を収集します
 
 ![bg left:28% w:350px](./images/gakkai_2-1.png)
 
@@ -320,14 +323,15 @@ for shopinfo in shopinfo_list:
 
 ## 上記コードの注意点
 
-**※: ⚠️WEBスクレイピングは注意が必要です**
+**※⚠️WEBスクレイピングは注意が必要です**
 
 * 短時間で多数アクセスはしないように注意
+  * → ランダムな時間待機を入れる
 * 規約やポリシーを守りましょう
 
-※: サイト上に見えない文字があることがあります → 文字列置換をしましょう
+※サイト上に見えない文字があることがあります → 文字列置換をしましょう
 
-※: この例ではサイトのページネーションに対応していません
+※この例ではサイトのページネーションに対応していません
 ページネーションについては資料のコードで対応しています
 
 ---
@@ -355,8 +359,8 @@ random_sleep(2, 5)
 
 ![bg left:35% h:600px](./images/programing-flow.png)
 
-3.で利用するためのデータ（ファイル）を
-作成します
+1で作成したデータを、3.で利用するために
+ファイルを作成します
 
 * **💾情報を整理して表形式ファイルで書き出す**
 * [付録]👣地理情報を集める
@@ -367,11 +371,13 @@ random_sleep(2, 5)
 
 どのフォーマットで書き出すか？
 
-よくある地理データ向けファイルフォーマット
+よくある地理データ向けファイルフォーマットの中から選びます
 
 * **CSV（カンマ区切り表形式、汎用性高）**
 * GeoJSON（WEB APIで広く流通しているJSON形式の地理情報向け）
 * KML（XML形式）
+
+※今回は3.で使うサービスの都合もあり、CSVを選択しました
 
 ---
 
@@ -380,23 +386,28 @@ Python標準のCSVライブラリを使って書き出します
 `csv.DictWriter`を使うと辞書形式のデータをCSVに書き出せます
 
 ```python
+import csv
+
 with open('mapdata.csv', 'w', newline='') as csvfile:
 
     # ※:お店の詳細情報の各項目:辞書のキー が部分的に異なるため、
     # 全ての項目名:辞書のキーを集めて重複を取り除いたリストを作成しています
+
     csv_fieldnames = list(set().union(*shopinfo_list)
 
     writer = csv.DictWriter(csvfile, fieldnames=csv_fieldnames)
+    # 最初の行に項目名→列名を書き出す
     writer.writeheader()
+    # 辞書のキーをもとに行として書き出す
     for shopinfo in shopinfo_list:
         writer.writerow(shopinfo)
 ```
-<!-- _footer: ※`変数:csv_fieldname`では項目名のばらつきがあるため、  -->
+
 ---
 
 出力できたCSVファイル🎉
 
-![h:300px](./images/csv1.png) ![h:300px](./images/csv2.png)
+![h:300px](./images/csv1.png)　![h:300px](./images/csv2.png)
 
 ---
 
@@ -413,7 +424,7 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
 Googleマイマップとは
 
-* オリジナルマップを作成できる
+* Googleマップ上でオリジナルマップを作成できる
 * スマホ版Googleマップでも表示可能
 
 ---
@@ -464,7 +475,7 @@ Googleマイマップとは
 
 データを作るといろんなサービスと連携できます
 
-※: 今回はGoogleマイマップを利用する例を紹介しました
+※今回はGoogleマイマップを利用する例を紹介しました
 オリジナルのマップを作るサービスの一例です
 それぞれ特徴や無料有料とあるので、使いやすいものを探してみましょう
 
