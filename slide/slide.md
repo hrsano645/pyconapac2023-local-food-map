@@ -385,7 +385,7 @@ random_sleep(2, 5)
 
 Python標準のCSVライブラリを使って書き出します
 
-`csv.DictWriter`を使うと辞書形式のデータをCSVに書き出せます
+`csv.DictWriter`を使うとリスト>辞書構造のデータをCSVファイルにしやすいです
 
 ```python
 import csv
@@ -394,7 +394,6 @@ with open('mapdata.csv', 'w', newline='') as csvfile:
 
     # ※:お店の詳細情報の各項目:辞書のキー が部分的に異なるため、
     # 全ての項目名:辞書のキーを集めて重複を取り除いたリストを作成しています
-
     csv_fieldnames = list(set().union(*shopinfo_list)
 
     writer = csv.DictWriter(csvfile, fieldnames=csv_fieldnames)
