@@ -1,0 +1,28 @@
+[project]
+name = "pyconapac2023-local-food-map"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "Hiroshi Sano", email = "hrs.sano645@gmail.com" }]
+dependencies = [
+    "google-cloud-vision>=3.4.4",
+    "python-dotenv>=1.0.0",
+    "pillow>=10.0.0",
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.2",
+]
+readme = "README.md"
+requires-python = ">= 3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev_dependencies = []
+dev-dependencies = [
+    "jupyter>=1.0.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
