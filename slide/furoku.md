@@ -23,10 +23,13 @@ marp: true
 
 ## WEBスクレイピング: Seleniumの例
 
-* 動的な（javascriptなど利用した）サイトはrequestsで対応が難しいことがあります
-* 本物のブラウザ + ブラウザ自動操作ツール(selenium)を使った例も載せておきます
+* 動的な（javascript/jsなど利用した）サイトはrequestsで対応が難しいことがあります
+* 本物のブラウザ + ブラウザ自動操作ツール（selenium）を使った例も載せておきます
 
--> url
+-> code/generate_mapdata_fujinomiyayakisoba_selenium.py
+
+※Chromeを利用した例となります
+※このコードの例では、ページが表示された後にjsで動的な操作がないことを前提にしています
 
 ---
 
@@ -39,11 +42,15 @@ marp: true
 
 ---
 
-## 位置情報
+## 位置情報:世界
 
 * 世界: Google Maps Platform ->
   <https://developers.google.com/maps/documentation/geocoding/overview?hl=ja>
   * -> url
+
+---
+
+## 位置情報:日本
 
 * 日本: 東大CSIS -> jageocoder
   <https://github.com/t-sagara/jageocoder>
