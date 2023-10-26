@@ -6,7 +6,7 @@
 
 ## スライド
 
-スライドは [slide/slide.md](slide/slide.md) にあります。
+スライドは [slide/slide.pdf](slide/slide.pdf) にあります。
 
 ## サンプルコード
 
