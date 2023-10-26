@@ -8,10 +8,15 @@ import time
 import random
 
 # デバッグ用
-from pprint import pprint
+# from pprint import pprint
 
-siteurl = "https://umya-yakisoba.com/shop/"
-pagenum = 2 # ページネーションのページ数。2から始める
+# 設定
+## TODO: 2023-10-26 この部分は多数実行を考慮して最初は10件のみの取得にしています
+SHOP_NUM = 10 # 取得する店舗数。Noneの場合はすべて取得する
+
+# 定数
+SITEURL = "https://umya-yakisoba.com/shop/"
+
 
 def replace_text(text: str) -> str:
     """
@@ -66,18 +71,20 @@ def random_sleep(a: int,b: int) -> None:
     time.sleep(random.randint(a,b))
 
 
+# ページネーションのページ数。2から始める
+pagenum = 2 
 # 学会の一覧から、店舗名と詳細情報用のURLを取得する。マップのセットにしておく
 shopinfo_list = []
 
 # ページの中にある店舗一覧の中から、店舗名と詳細URLを取得
 # 最初のページを試す
 print("page.1 処理中...")
-shopinfo_list.extend(get_shopinfo_list(siteurl))
+shopinfo_list.extend(get_shopinfo_list(SITEURL))
 
 # 2ページ目以降、ページネーションはすでに決まってるので、そのままループで回す
 while True:
     print(f"page.{pagenum} 処理中...")
-    pageurl = siteurl + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
+    pageurl = SITEURL + f"page/{pagenum}/" # ページネーションのURL -> https://umya-yakisoba.com/shop/page/2/
 
     # ページが取得できなかったらループを抜ける: エラー処理としては緩いです
     if get_shopinfo_list(pageurl) is None:
@@ -90,8 +97,12 @@ while True:
     # ランダム時間待つ
     random_sleep(1,5)
 
-# debug:とりあえず絞って詳細収集する
-shopinfo_list = shopinfo_list[0:10]
+# SHOP_NUMが設定されていたら、その数だけ店舗情報を取得する
+if SHOP_NUM:
+    shopinfo_list = shopinfo_list[0:SHOP_NUM]
+
+print("店舗情報取得完了")
+print("店舗情報詳細取得中...")
 
 # 詳細URLからさらに詳細情報を取得する
 for shopinfo in shopinfo_list:
@@ -112,21 +123,21 @@ for shopinfo in shopinfo_list:
     # ランダム時間待つ
     random_sleep(1,5)
 
-pprint(shopinfo_list)
+print("スクレイピング処理完了")
+# pprint(shopinfo_list)
 
+print("CSVファイルに書き出し中...")
 # mapinfo_listをCSVファイルに書き出してみる。辞書内の値はすべて書き出す
 with open('mapdata.csv', 'w', newline='') as csvfile:
+
     # お店の詳細情報の各項目:辞書のキー が部分的にあったりなかったりしたので
     # 全ての辞書のキーから全ての項目をカバーしたリストを生成する
-    fieldnames = list(set().union(*shopinfo_list))
-
-    # 上のコードを丁寧に書くとこうなる
-    # all_fieladnames_by_shopinfo = (list(shopinfo.keys()) for shopinfo in shopinfo_list)
-    # fieldnames = list(set().union(*all_fieladnames_by_shopinfo))
+    # またソートをして項目の順番を揃える
+    fieldnames = sorted(list(set().union(*shopinfo_list)))
 
     # CSVファイルに書き出す
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for shopinfo in shopinfo_list:
         writer.writerow(shopinfo)
-
+    print("CSVファイルへの書き出し完了")
