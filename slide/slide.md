@@ -21,7 +21,7 @@ Hiroshi Sano / 佐野浩士
 本日の資料は公開されています
 
 * スライド: Speaker Deck
-  <https://speakerdeck.com/hrsano645/pyconapac2023-lets-make-localfood-map>
+  <https://speakerdeck.com/hrsano645/godang-di-gurumematupuwozuo-rou>
   
 * GitHubリポジトリ: コードとスライド
   <https://github.com/hrsano645/pyconapac2023-local-food-map>
